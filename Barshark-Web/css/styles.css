@@ -1,0 +1,199 @@
+html, body {
+	font-family: 'Roboto Condensed', sans-serif;
+	background-color: #006CFF;
+	height: 100%;
+	width: 100%;
+}
+
+.landing-intro {
+	height: 95%;
+	text-align: center;
+}
+
+.landing-intro h1 {
+	text-transform: uppercase;
+	margin-top: 200px;
+	font-size: 6em;
+	font-weight: 300;
+	letter-spacing: .7px;
+}
+
+h1 span {
+	color: #FFFFFF;
+	font-weight: 700;
+}
+
+.landing-intro h2 {
+	font-size: 2.2em;
+	font-weight: 400;
+	letter-spacing: .7px;
+}
+
+.landing-icon {
+	margin-top: 140px;
+	margin-bottom: 60px;
+    text-align:center;
+}
+
+.landing-icon a {
+	outline: none;
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #fff;
+    border-radius: 55px;
+}
+
+.landing-icon a i {
+    padding: 17px 11px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.landing-icon a:hover {
+	outline: none;
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #000;
+    border-radius: 55px;
+}
+
+.landing-icon a i:hover {
+    padding: 17px 11px;
+    font-size: 22px;
+    color: #000;
+}
+
+
+.spacer-section {
+	/*content: "";
+	position: absolute;
+	top: 0;
+	right: 0;*/
+	background-color: #FFFFFF;
+	border-width: 0 0 200px 1000px;
+	border-style: solid;
+	border-color: rgba(0,0,0,0) #006CFF;
+}
+
+.about-section h1 {
+	text-align: center;
+	font-size: 4em;
+}
+
+.team-section h1 {
+	text-align: center;
+	font-size: 4em;
+}
+
+.contact-section h1 {
+	text-align: center;
+	font-size: 4em;
+}
+
+
+/*
+#services-container {
+	padding-bottom: 50px;
+	background-color: #353535;
+	letter-spacing: 1px;
+}
+
+#complete-services {
+	position: relative;
+    background-color: #636363;
+    color: #FFFFFF;
+	min-height: 90vh;
+}
+        
+#complete-services:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-width: 0 150px 100px 0;
+	border-style: solid;
+	border-color: rgba(0,0,0,0) #353535 ;
+}
+*/
+
+
+.subscribe {
+	margin-top: 30px;
+}
+
+.input-group-btn {
+	letter-spacing: 0.75px;
+}
+
+.btn-subscribe {
+	color: #000;
+	background-color: #fff;
+	border-left-color: #000;
+	letter-spacing: 0.75px;
+}
+.btn-subscribe:focus,
+.btn-subscribe.focus {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #8c8c8c;
+}
+.btn-subscribe:hover {
+	color: #fff;
+	background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+.footer-section {
+    position:relative;
+    background-color:#006CFF;
+    height:350px !important;
+    width:100% !important;
+}
+
+.footer-section:after {
+    content:'';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -50px;
+    width: 0;
+    height: 0;
+    border-bottom: solid 50px #006CFF;
+    border-left: solid 50px transparent;
+    border-right: solid 50px transparent;
+}
+
+.footer-links {
+	margin-top: 50px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footer-social {
+	margin-top: 50px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
