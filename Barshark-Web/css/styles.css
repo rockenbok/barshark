@@ -201,7 +201,10 @@ h1 span {
     text-align: justify;
 }
 
-
+.about-image img {
+    max-width: 50%;
+    float-right;
+}
 
 
 
