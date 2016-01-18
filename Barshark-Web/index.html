@@ -11,45 +11,66 @@
 
     <title>Barshark</title>
 
+    <link rel="icon" 
+      type="image/png" 
+      href="img/favicon.ico">
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/scrolling-nav.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <style>
       @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
     </style>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script>
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+         
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+         
+          return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
 
-    <script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
- 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
- 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
+        <style>
+        .spinner {
+            color: #222;
+            text-align:center;
+            z-index: 1234;
+            overflow: auto;
+            padding-top: 10px;
+            width: 100%;
+        }
+    </style>
 
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#loadingDiv").bind("ajaxSend", function() {
+            $(this).show();
+        }).bind("ajaxStop", function() {
+            $(this).hide();
+        }).bind("ajaxError", function() {
+            $(this).hide();
+        });
+     
+         });
+    </script>
 </head>
-
-<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
@@ -80,7 +101,7 @@
                         <a class="page-scroll" href="#team">Team</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#contact-us">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -94,7 +115,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>We are <span>Barshark</span></h1>
+                    <h1 class="animated fadeInDown">We are <span>Barshark</span></h1>
                     <h2>FREE TO USE NIGHTLIFE APP COMING SOON TO iOS &amp; ANDROID.</h2>
                     <!--<h2>Subscribe below or follow us on Twitter for updates.</h2>
                     <h2>"Make every night, the best night."</h2>-->
@@ -109,7 +130,14 @@
                     </div>
 
                     <div class="landing-icon col-lg-12">
-                        <a class="page-scroll" href="#about"><i class="fa fa-chevron-down fa-lg"></i></a>
+                        <a class="page-scroll" href="#about">
+
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x "></i>
+                                <i class="fa fa-arrow-down fa-stack-1x "></i>
+                            </span>
+
+                        </a>
                     </div>
                 </div>
             </div>
@@ -141,81 +169,136 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>The Team</h1>
-                </div>
-            </div>
-                <div class="member1">
-                    <h1> CTO </h1>
-                </div>
+                    <h1>Meet Our Team</h1>
                 
-                <div class="member2">
-                    <h1> COO </h1>
+                    <hr>
                 </div>
-            
-                <div class="member3">
-                    <h1> CCO </h1>
+
+                <div id="devin" class="col-md-15 col-sm-3">
+                  <div id="overlay">
+                    <div id="plus">
+                      <h1>Devin Robbins</h1>
+                      <h2>CEO / Founder</h2>
+                    </div>
+                  </div>
                 </div>
-            
-                <div class="member4">
-                    <h1> CMO </h1>
+
+                <div id="mark" class="col-md-15 col-sm-3">
+                  <div id="overlay">
+                    <div id="plus">
+                        <h1>Mark Ybarra</h1>
+                        <h2>COO / Developer</h2>
+                    </div>
+                  </div>
                 </div>
-            
-                <div class="member5">
-                    <h1> CEO </h1>
+
+                <div id="matt" class="col-md-15 col-sm-3">
+                  <div id="overlay">
+                    <div id="plus">
+                        <h1>Matt Ericsson</h1>
+                        <h2>CTO / Developer</h2>
+                    </div>
+                  </div>
                 </div>
+
+                <div id="teresa" class="col-md-15 col-sm-3">
+                  <div id="overlay">
+                    <div id="plus">
+                        <h1>Teresa Huff</h1>
+                        <h2>CMO</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="nick" class="col-md-15 col-sm-3">
+                  <div id="overlay">
+                    <div id="plus">
+                        <h1>Nick Leyva</h1>
+                        <h2>CCO / Photography</h2>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
+    <section id="contact-us" class="contact-section">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Contact Us</h1>
                 </div>
             </div>
-                <div class="contactinfo">
-                    <p class="contactinfo-text">
-                        Address: 
-                        <br> &emsp;1234 Example Street 
-                        <br> &emsp;Orlando, FL 
-                        <br> &emsp;32765
-                            <br>
-                        Phone:
-                        <br> &emsp;123.123.1234
-                            <br>
-                        Email
-                        <br> &emsp;<a href="mailto:info@thebarshark.com?Subject=Contact Us" target="_top">info@thebarshark.com</a>
-                    </p>
+
+                    <div class="contact col-md-7">
+                        <form id="contact" name="contact" method="post"> 
+                            <div id="contact-info">
+                            
+                                <!--== NAME ==-->
+                                <div class="col-md-12">
+                                    <div class="contact-titles">
+                                        * NAME
+                                    </div>
+
+                                    <input type="text" class="required input-text m-wrap m-ctrl-large" name="name" id="name" placeholder=""/>
+                                </div>
+
+                                <!--== EMAIL ==-->
+                                <div class="col-md-12">
+                                    <div class="contact-titles col-md-4">
+                                        * EMAIL
+                                    </div>
+
+                                    <input type="text" class="required input-text m-wrap m-ctrl-large" name="email" id="email" value="" placeholder="example@address.com"/>
+                                </div>
+
+                                <!--== MESSAGE ==-->
+                                <div class="col-md-12">
+                                    <div class="contact-titles col-md-4">
+                                        * MESSAGE
+                                    </div>
+
+                                    <textarea name="message" class="required input-textarea message m-wrap m-ctrl-large" id="message" placeholder=""></textarea>
+                                </div>
+
+                                <!--== SUBMIT ==-->
+                                <button type="submit" class="submit-button">
+                                    <i class="fa fa-paper-plane fa-2x"></i>
+                                </button>
+
+                                <div id="loadingDiv" class="spinner" style="display:none;">
+                                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                                </div>
+                        
+                            </div><!-- /end contact-info -->
+                        </form><!-- /end form -->
+                    </div><!-- /end col-md-7 -->
+            </div><!-- /row -->
+
+            <div class="col-md-6"></div>
+            <div class="col-md-5 give-me-padding">
+                <div id="success">
+                  <span>
+                    Your message was successfully sent!<br>I will be in touch as soon as possible.
+                  </span>
                 </div>
-            <div class="contactinfo-form">
-                    <form class="contactinfo-form-text">
-                        Contact Us
-                            <br> &emsp;Name: <br>
-                                <div class="form-name">
-                                <!--Insert Message Here-->
-                                </div>
-                            <br> &emsp;Subject: <br>
-                                <div class="form-subject">
-                                <!--Insert Message Here-->
-                                </div>
-                            <br> &emsp;Email: <br>
-                                <div class="form-email">
-                                <!--Insert Message Here-->
-                                </div>
-                            <br> &emsp;Message: <br>
-                                <div class="form-message">
-                                <!--Insert Message Here-->
-                                </div>
-                        
-                        
-                    </form>
+
+                <div id="error">
+                  <span>
+                    Something went wrong.<br>Try refreshing and submit the form again.
+                  </span>
+                </div>
             </div>
-        </div>
-    </section>
 
 
+            <div class="col-md-6"></div><!-- /spacer -->
+        
+        </div><!-- /end row -->
+        </div><!-- /end container -->
+    </section><!-- /end section -->
 
 
 
@@ -233,12 +316,12 @@
 
         <div class="footer-social col-md-6">
             <a class="twitter-timeline" href="https://twitter.com/thebarshark" data-widget-id="688836299902554112">Tweets by @thebarshark</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            
+            <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+            </script>
         </div>
     </section>
-
-
-
 
 
 
@@ -253,6 +336,11 @@
     <!-- Scrolling Nav JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/scrolling-nav.js"></script>
+
+    <!-- Form Validation -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="validate.js"></script>
 
 </body>
 
