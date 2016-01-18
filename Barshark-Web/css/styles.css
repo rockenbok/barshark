@@ -191,6 +191,14 @@ h1 span {
     max-width: 100px;
 }
 
+.about {
+    max-width: 50%;
+    float: left;
+}
+
+.abouttext {
+    font-size: 18px;
+}
 
 
 
