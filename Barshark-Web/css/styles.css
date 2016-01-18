@@ -192,8 +192,9 @@ h1 span {
 }
 
 .about {
-    max-width: 50%;
+    max-width: 45%;
     float: left;
+    margin-right: 10px;
 }
 
 .abouttext {
@@ -202,8 +203,9 @@ h1 span {
 }
 
 .aboutimage img {
-    max-width: 50%;
+    max-width: 45%;
     float-right;
+    margin-left: 10px;
 }
 
 
