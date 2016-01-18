@@ -283,3 +283,39 @@ h1 span {
     font-size: 20px;
     padding-right: 10px;
 }
+
+.form-name{
+    max-width: 40%;
+    width: 500px;
+    height: 25px;
+    float: right;
+    border-width: medium;
+    border-style: groove;
+}
+
+.form-subject{
+    max-width: 40%;
+    width: 500px;
+    height: 25px;
+    float: right;
+    border-width: medium;
+    border-style: groove;
+}
+
+.form-email{
+    max-width: 40%;
+    width: 500px;
+    height: 25px;
+    float: right;
+    border-width: medium;
+    border-style: groove;
+}
+
+.form-message{
+    max-width: 40%;
+    width: 500px;
+    height: 100px;
+    float: right;
+    border-width: medium;
+    border-style: groove;
+}
