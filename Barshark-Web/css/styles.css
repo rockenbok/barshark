@@ -187,7 +187,9 @@ h1 span {
 	margin-right: auto;
 }
 
-
+.navlogo {
+    max-width: 100px;
+}
 
 
 
