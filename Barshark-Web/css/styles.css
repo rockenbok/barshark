@@ -16,9 +16,10 @@
     padding: 0 0 0px 0;
 }
 
-.contacttagline, .contactemail, .contactoffice, .contactinfo {
+.contactemail, .contactoffice, .contactinfo {
     text-align: left;
 }
+
 
 /* Gradient transparent - color - transparent */
 
@@ -229,7 +230,7 @@ hr {
 }
 
 .contact-section h1 {
-    text-align: center;
+    text-align: left;
     font-size: 4em;
 }
 
