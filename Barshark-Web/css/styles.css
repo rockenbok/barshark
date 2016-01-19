@@ -16,8 +16,14 @@
     padding: 0 0 0px 0;
 }
 
-.contactemail, .contactoffice, .contactinfo {
+.contactinfo {
     text-align: left;
+    text-transform: uppercase;
+}
+
+.contactinfo h4 {
+    text-align: left;
+    margin-bottom: 2px;
 }
 
 
@@ -28,7 +34,7 @@ hr.contactseperator {
     margin-bottom: 0;
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    background-color: #000;
 }
 
 
@@ -79,7 +85,7 @@ hr.contactseperator {
     height: 60px;
     width: 100%;
     color: #222;
-    background-color: #19deb1;
+    background-color: #f8f8f8;
     border-style: none;
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
@@ -142,7 +148,7 @@ label.error {
 
 html, body {
     font-family: 'Roboto Condensed', sans-serif;
-    background-color: #3DCDDC;
+    background-color: #3DdcDC;
     height: 100%;
     width: 100%;
 }
@@ -201,7 +207,7 @@ h1 span {
     background-color: #FFFFFF;
     border-width: 0 0 200px 1000px;
     border-style: solid;
-    border-color: rgba(0,0,0,0) #3DCDDC;
+    border-color: rgba(0,0,0,0) #3DdcDC;
 }
 
 .about-section h1 {
@@ -210,7 +216,7 @@ h1 span {
 }
 
 .team-section {
-    background-color: #333;
+    background-color: #231f20;
 }
 
 .team-section h1 {
@@ -232,6 +238,8 @@ hr {
 .contact-section h1 {
     text-align: left;
     font-size: 4em;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -282,7 +290,7 @@ hr {
 }
 .btn-subscribe:focus,
 .btn-subscribe.focus {
-	color: #333;
+	color: #231f20;
 	background-color: #e6e6e6;
 	border-color: #8c8c8c;
 }
@@ -297,12 +305,14 @@ hr {
 
 
 
-
+.fin {
+    text-align: center;
+}
 
 
 .footer-section {
     position:relative;
-    background-color:#3DCDDC;
+    background-color:#231f20;
     height:350px !important;
     width:100% !important;
 }
@@ -315,7 +325,7 @@ hr {
     margin-left: -50px;
     width: 0;
     height: 0;
-    border-bottom: solid 50px #3DCDDC;
+    border-bottom: solid 50px transparent;
     border-left: solid 50px transparent;
     border-right: solid 50px transparent;
 }
@@ -398,7 +408,7 @@ hr {
 }
 
 #overlay {
-    background:rgba(0,108,255,.90);
+    background:rgba(207,207,207,.90);
     background-size:cover;
     opacity:0;
     height: 100%;
@@ -414,7 +424,7 @@ hr {
 #nick #overlay,
 #teresa #overlay,
 #mark > #overlay {
-    background:rgba(0,108,255,.90);
+    background:rgba(207,207,207,.90);
     background-size:cover;
     opacity:0;
     height: 100%;
@@ -459,7 +469,7 @@ hr {
     margin-left: auto;
     margin-right: auto;html, body {
     font-family: 'Roboto Condensed', sans-serif;
-    background-color: #3DCDDC;
+    background-color: #3DdcDC;
     height: 100%;
     width: 100%;
 }
@@ -533,7 +543,7 @@ h1 span {
     background-color: #FFFFFF;
     border-width: 0 0 200px 1000px;
     border-style: solid;
-    border-color: rgba(0,0,0,0) #3DCDDC;
+    border-color: rgba(0,0,0,0) #3DdcDC;
 }
 
 .about-section h1 {
@@ -542,11 +552,6 @@ h1 span {
 }
 
 .team-section h1 {
-    text-align: center;
-    font-size: 4em;
-}
-
-.contact-section h1 {
     text-align: center;
     font-size: 4em;
 }
@@ -594,7 +599,7 @@ h1 span {
 }
 .btn-subscribe:focus,
 .btn-subscribe.focus {
-    color: #333;
+    color: #231f20;
     background-color: #e6e6e6;
     border-color: #8c8c8c;
 }
@@ -614,7 +619,7 @@ h1 span {
 
 .footer-section {
     position:relative;
-    background-color:#3DCDDC;
+    background-color:#3DdcDC;
     height:350px !important;
     width:100% !important;
 }
@@ -627,7 +632,7 @@ h1 span {
     margin-left: -50px;
     width: 0;
     height: 0;
-    border-bottom: solid 50px #3DCDDC;
+    border-bottom: solid 50px #3DDCDC;
     border-left: solid 50px transparent;
     border-right: solid 50px transparent;
 }
