@@ -355,7 +355,7 @@ hr {
 }
 
 .abouttext {
-    font-size: 20px;
+    font-size: 1.2em;
     text-align: justify;
 }
 
@@ -696,8 +696,6 @@ h1 span {
         float: left;
     }
 }
-
-
 
 
 
