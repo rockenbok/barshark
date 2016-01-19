@@ -142,7 +142,7 @@ label.error {
 
 html, body {
     font-family: 'Roboto Condensed', sans-serif;
-    background-color: #006CFF;
+    background-color: #3DCDDC;
     height: 100%;
     width: 100%;
 }
@@ -201,7 +201,7 @@ h1 span {
     background-color: #FFFFFF;
     border-width: 0 0 200px 1000px;
     border-style: solid;
-    border-color: rgba(0,0,0,0) #006CFF;
+    border-color: rgba(0,0,0,0) #3DCDDC;
 }
 
 .about-section h1 {
@@ -302,7 +302,7 @@ hr {
 
 .footer-section {
     position:relative;
-    background-color:#006CFF;
+    background-color:#3DCDDC;
     height:350px !important;
     width:100% !important;
 }
@@ -315,7 +315,7 @@ hr {
     margin-left: -50px;
     width: 0;
     height: 0;
-    border-bottom: solid 50px #006CFF;
+    border-bottom: solid 50px #3DCDDC;
     border-left: solid 50px transparent;
     border-right: solid 50px transparent;
 }
@@ -459,7 +459,7 @@ hr {
     margin-left: auto;
     margin-right: auto;html, body {
     font-family: 'Roboto Condensed', sans-serif;
-    background-color: #006CFF;
+    background-color: #3DCDDC;
     height: 100%;
     width: 100%;
 }
@@ -533,7 +533,7 @@ h1 span {
     background-color: #FFFFFF;
     border-width: 0 0 200px 1000px;
     border-style: solid;
-    border-color: rgba(0,0,0,0) #006CFF;
+    border-color: rgba(0,0,0,0) #3DCDDC;
 }
 
 .about-section h1 {
@@ -614,7 +614,7 @@ h1 span {
 
 .footer-section {
     position:relative;
-    background-color:#006CFF;
+    background-color:#3DCDDC;
     height:350px !important;
     width:100% !important;
 }
@@ -627,7 +627,7 @@ h1 span {
     margin-left: -50px;
     width: 0;
     height: 0;
-    border-bottom: solid 50px #006CFF;
+    border-bottom: solid 50px #3DCDDC;
     border-left: solid 50px transparent;
     border-right: solid 50px transparent;
 }
