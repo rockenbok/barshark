@@ -50,7 +50,7 @@ body {
 /* NAVIGATION */
 
 .navlogo {
-    max-width: 100px;
+    max-width: 125px;
 }
 
 @media (max-width: 768px) {
