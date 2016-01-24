@@ -5,7 +5,7 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -1086,7 +1086,6 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #231f20;
-  background-color: #fff;
 }
 input,
 button,
@@ -4178,13 +4177,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-collapse {
-  padding-right: 15px;
+  padding-right: 5px;
   padding-left: 15px;
-  overflow-x: visible;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  border-top: 1px solid transparent;
+  /*border-top: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);*/
 }
 .navbar-collapse.in {
   overflow-y: auto;
@@ -4276,10 +4275,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 18px;
   line-height: 20px;
   letter-spacing: 1px;
+  opacity: .7;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
+  opacity: 1;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
 }
 .navbar-brand > img {
   display: block;
@@ -4298,9 +4303,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 8px;
   margin-right: 15px;
   margin-bottom: 8px;
-  background-color: transparent;
+  background-color: #fff;
   background-image: none;
-  border: 1px solid transparent;
+  border: 1px solid #fff;
   border-radius: 4px;
 }
 .navbar-toggle:focus {
@@ -4494,8 +4499,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: transparent;
+  /*border-color: #231f20;*/
 }
 .navbar-default .navbar-brand {
   color: #006CFF;
@@ -4509,12 +4514,22 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #000;
+  color: #fff;
+  opacity: .7;
+  border-top: 2px solid transparent;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #006CFF;
+  color: #fff;
+  opacity: 1;
+  border-top: 2px solid #fff;
   background-color: transparent;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -4529,14 +4544,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-toggle {
-  border-color: #ddd;
+  border-color: #fff;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #ddd;
+  background-color: #231f20;
+  border: 1px solid #231f20;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #231f20;
+}
+.navbar-default .navbar-toggle:hover .icon-bar {
+  background-color: #fff;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -5841,8 +5860,8 @@ button.list-group-item-danger.active:focus {
 }
 .close {
   float: right;
-  font-size: 21px;
-  font-weight: bold;
+  font-size: 50px;
+  font-weight: 700;
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
@@ -5859,7 +5878,7 @@ button.list-group-item-danger.active:focus {
 }
 button.close {
   -webkit-appearance: none;
-  padding: 0;
+  padding-right: 30px;
   cursor: pointer;
   background: transparent;
   border: 0;
@@ -5901,19 +5920,16 @@ button.close {
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 10px;
+  margin: 15px 0px 10px 15px;
 }
 .modal-content {
   position: relative;
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 6px;
   outline: 0;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  /*-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);*/
 }
 .modal-backdrop {
   position: fixed;
@@ -5922,7 +5938,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000;
+  background-color: #231f20;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);
@@ -5933,24 +5949,66 @@ button.close {
   opacity: .5;
 }
 .modal-header {
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  padding: 30px 15px 15px 15px;
 }
 .modal-header .close {
   margin-top: -2px;
 }
-.modal-title {
+.modal-title h2 {
+  text-align: left;
+  padding-left: 24px;
+  font-size: 2em;
   margin: 0;
-  line-height: 1.42857143;
+}
+.modal-subtitle h3 {
+  text-align: left;
+  padding-left: 25px;
+  margin: 0;
+  font-weight:700;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  color: #3ddcdc;
+}
+.team-pic {
+  padding: 10px 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+@media (min-width: 990px) {
+  .team-pic {
+    padding: 0px 40px;
+  }
+}
+
+.modal-link h3 {
+  text-align: left;
+  margin: 0;
+  font-weight:700;
+  font-size: 1em;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1.5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1px;
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 20px 40px;
+  font-weight: 300;
+  text-align: left;
+  letter-spacing: 1px;
+  background-color: #fff;
 }
 .modal-footer {
-  padding: 15px;
+  padding: 15px 40px;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
+  background-color: #fff;
 }
 .modal-footer .btn + .btn {
   margin-bottom: 0;
@@ -5972,11 +6030,11 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 150px auto;
   }
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    /*-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);*/
   }
   .modal-sm {
     width: 300px;

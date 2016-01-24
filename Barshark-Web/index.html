@@ -15,12 +15,13 @@
       type="image/png" 
       href="img/favicon.ico">
 
-    <!-- Bootstrap Core CSS -->
+        <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/scrolling-nav.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -28,101 +29,64 @@
       @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
     </style>
 
-    <script>
-        window.twttr = (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-          if (d.getElementById(id)) return t;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "https://platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js, fjs);
-         
-          t._e = [];
-          t.ready = function(f) {
-            t._e.push(f);
-          };
-         
-          return t;
-        }(document, "script", "twitter-wjs"));
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/parallax.min.js"></script>
 
-        <style>
-        .spinner {
-            color: #222;
-            text-align:center;
-            z-index: 1234;
-            overflow: auto;
-            padding-top: 10px;
-            width: 100%;
-        }
-    </style>
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $("#loadingDiv").bind("ajaxSend", function() {
-            $(this).show();
-        }).bind("ajaxStop", function() {
-            $(this).hide();
-        }).bind("ajaxError", function() {
-            $(this).hide();
-        });
-     
-         });
-    </script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top"><!--BARSHARK--><img class= "navlogo"; src=img/logoblack.png></a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">Vision</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#team">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact-us">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
     <!-- Intro Section -->
-    <section id="intro" class="landing-intro">
+    <div id="intro" class="landing-intro parallax-container" data-parallax="scroll" data-image-src="img/main-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="animated fadeInDown">We are <span>Barshark</span></h1>
-                    <h2>FREE TO USE NIGHTLIFE APP COMING SOON TO iOS &amp; ANDROID.</h2>
-                    <!--<h2>Subscribe below or follow us on Twitter for updates.</h2>
-                    <h2>"Make every night, the best night."</h2>-->
 
-                    <div class="subscribe col-md-4 col-md-offset-4">
+                    <!-- Navigation -->
+                    <nav class="navbar navbar-default navbar-static-top">
+                        <div class="container">
+                            <div class="navbar-header page-scroll">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="navbar-brand"><img class="navlogo" src="img/logowhite.png" alt="Barshark"></div>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav">
+                                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                                    <li class="hidden">
+                                        <a class="page-scroll" href="#page-top"></a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#about">About</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#team">Team</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#contact-us">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                    </nav>
+
+
+                    <h1 class="landing-intro animated fadeInDown">We are <span>Barshark</span></h1>
+
+                    <h2 class="landing-intro animated fadeIn">Free to use nightlife app coming soon to iOS &amp; Android.</h2>
+
+                    <div class="subscribe col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <div class="input-group">
                           <input type="text" class="form-control" placeholder="Email address">
+
                           <span class="input-group-btn">
                             <button class="btn btn-subscribe" type="button">Subscribe</button>
                           </span>
@@ -142,82 +106,379 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
 
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>Our Vision</h1>
+                <div class="col-md-12">
+                    <h1>Our Vision.</h1><h2>We understand the difficult decisions involved when it comes to going out. Sometimes we find ourselves at a location that isn't quite what we were expecting. Wouldn’t it be great to know exactly what the outlook’s like before you get there? We’ll help by revealing drink specials, whether or not it’s busy, gender ratio, if your friends are checked in, an up/downvote system based on your experience and more! Let us be the go-to guide in order for you to have the best time.</h2>
                 </div>
+                
+                <!--<div class="aboutimage col-md-6">
+                    <img src="img/iphone-interface.png">
+                </div>-->
             </div>
-            <div class="about">
-                <p class="abouttext">Here at Barshark, we understand the difficult decisions involved when it comes to going out. Sometimes we find ourselves at a location that doesn’t quite fit what we envisioned. Wouldn’t it be great to know exactly what the outlook’s like before you get there? We’ll help by revealing the drink specials, whether or not it’s busy, gender ratio, if your friends are checked in, reviews and more! Let us be the go-to guide in order to you to meet your expectations.
-</p>
-            </div>
-            <div class="aboutimage">
-                <img src="img/appplaceholder.jpg">
-            </div>
+            <!--<div class="about col-md-12">
+                <p class="abouttext">
+                    Here at Barshark, we understand the difficult decisions involved when it comes to going out. Sometimes we find ourselves at a location that doesn’t quite fit what we envisioned. Wouldn’t it be great to know exactly what the outlook’s like before you get there? We’ll help by revealing drink specials, whether or not it’s busy, gender ratio, if your friends are checked in, reviews and more! Let us be the go-to guide in order to you to meet your expectations.
+                </p>
+            </div>-->
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="twitter-spacer parallax-container" data-parallax="scroll" data-image-src="img/twitter-spacer-pic.jpg">
+
+            <a class="twitter-timeline"  href="https://twitter.com/thebarshark" data-widget-id="689300955628744704"></a>
+
+            <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+            </script>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- Services Section -->
     <section id="team" class="team-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>Meet Our Team</h1>
+                <div class="col-md-12">
+                    <h1>Meet The Team.</h1>
+                </div>
+
+                <div id="devin" class="hvr-sweep-to-bottom col-md-15 col-sm-3" data-toggle="modal" data-target="#devin-description">
+                  <div class="overlay">
+                    <div class="plus">
+                      <h2>Devin Robbins</h2>
+                      <h3>CEO / Founder</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="mark" class="hvr-sweep-to-bottom col-md-15 col-sm-3" data-toggle="modal" data-target="#mark-description">
+                  <div class="overlay">
+                    <div class="plus">
+                        <h2>Mark Ybarra</h2>
+                        <h3>COO / Developer</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="matt" class="hvr-sweep-to-bottom col-md-15 col-sm-3" data-toggle="modal" data-target="#matt-description">
+                  <div class="overlay">
+                    <div class="plus">
+                        <h2>Matt Ericsson</h2>
+                        <h3>CTO / Developer</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="teresa" class="hvr-sweep-to-bottom col-md-15 col-sm-3" data-toggle="modal" data-target="#teresa-description">
+                  <div class="overlay">
+                    <div class="plus">
+                        <h2>Teresa Huff</h2>
+                        <h3>CMO</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="nick" class="hvr-sweep-to-bottom col-md-15 col-sm-3" data-toggle="modal" data-target="#nick-description">
+                  <div class="overlay">
+                    <div class="plus">
+                        <h2>Nick Leyva</h2>
+                        <h3>CCO / Photographer</h3>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+<!-- Devin Description -->
+<div id="devin-description" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+            <div class="container">
+            <div class="modal-title"><h2>Devin Robbins</h2></div>
+            <div class="modal-subtitle"><h3>CEO / Founder</h3></div>
+        </div>
+
+        <div class="modal-body col-sm-7 col-md-7">
+            <p>Devin is known best for his vision in this endeavor and graphic design wizardry. He is responsible for having a hand in every aspect of Barshark.</p>
+
+            <p>During downtime, you can find him riding his bike or valiantly trying to beat Wade Boggs' record for number of beers consumed in one day.</p>
+        </div>
+
+        <div class="team-pic col-sm-5 col-md-5">
+            <img src="img/devin2.png" alt="Devin Robbins">
+        </div>
+
+
+        <div class="modal-footer">
+            <div class="modal-link col-sm-12">
+
+                <h3>
+
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="http://devinmathew.com/" target="_blank">Visit Devin's Website</a>
+                    </span>
+
+                </h3>
+
+                <h3>
                 
-                    <hr>
-                </div>
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="https://www.instagram.com/devin_robbins/" target="_blank">Follow Devin On Instagram</a>
+                    </span>
 
-                <div id="devin" class="col-md-15 col-sm-3">
-                  <div id="overlay">
-                    <div id="plus">
-                      <h1>Devin Robbins</h1>
-                      <h2>CEO / Founder</h2>
-                    </div>
-                  </div>
-                </div>
+                </h3>
 
-                <div id="mark" class="col-md-15 col-sm-3">
-                  <div id="overlay">
-                    <div id="plus">
-                        <h1>Mark Ybarra</h1>
-                        <h2>COO / Developer</h2>
-                    </div>
-                  </div>
-                </div>
 
-                <div id="matt" class="col-md-15 col-sm-3">
-                  <div id="overlay">
-                    <div id="plus">
-                        <h1>Matt Ericsson</h1>
-                        <h2>CTO / Developer</h2>
-                    </div>
-                  </div>
-                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
-                <div id="teresa" class="col-md-15 col-sm-3">
-                  <div id="overlay">
-                    <div id="plus">
-                        <h1>Teresa Huff</h1>
-                        <h2>CMO</h2>
-                    </div>
-                  </div>
-                </div>
+  </div>
+</div>
 
-                <div id="nick" class="col-md-15 col-sm-3">
-                  <div id="overlay">
-                    <div id="plus">
-                        <h1>Nick Leyva</h1>
-                        <h2>CCO / Photographer</h2>
-                    </div>
-                  </div>
-                </div>
+
+
+<!-- Devin Description -->
+<div id="mark-description" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+            <div class="container">
+            <div class="modal-title"><h2>Mark Ybarra</h2></div>
+            <div class="modal-subtitle"><h3>COO / Developer</h3></div>
+        </div>
+
+        <div class="modal-body col-sm-7 col-md-7">
+            <p>Specializing in PHP, he is the the crowned jewel of back-end development. Mark thrives in complex environments and welcomes the challenges presented to him.</p>
+
+            <p>You can likely find Mark lounging in a velvet, mahogany armchair in front of a fire with his cat Zeus.</p>
+
+            <p>Nobody knows what they're plotting.</p>
+        </div>
+
+        <div class="team-pic col-sm-5 col-md-5">
+            <img src="img/mark2.png" alt="Mark Ybarra">
+        </div>
+
+
+        <div class="modal-footer col-sm-12">
+            <div class="modal-link">
+
+                <h3>
+                
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="#" target="_blank">Visit Mark's Website</a>
+                    </span>
+
+                </h3>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Devin Description -->
+<div id="matt-description" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+            <div class="container">
+            <div class="modal-title"><h2>Matt Ericsson</h2></div>
+            <div class="modal-subtitle"><h3>CTO / Developer</h3></div>
+        </div>
+
+        <div class="modal-body col-sm-7 col-md-7">
+            <p>Another talent hailing 5th generation from Florida, Matt is our front-end web and mobile developer. Experienced in many facets, he also has an eye for design. Matt spearheads every project which will keep him up way past the sun breaking the horizon. </p>
+
+            <p>Given this, he somehow finds time to embrace his love for craft beer and everything hockey.</p>
+        </div>
+
+        <div class="team-pic col-sm-5 col-md-5">
+            <img src="img/matt2.png" alt="Matt Ericsson">
+        </div>
+
+
+        <div class="modal-footer col-sm-12">
+            <div class="modal-link">
+
+                <h3>
+
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="http://mattericsson.com/" target="_blank">Visit Matt's Website</a>
+                    </span>
+
+                </h3>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Devin Description -->
+<div id="teresa-description" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+            <div class="container">
+            <div class="modal-title"><h2>Teresa Huff</h2></div>
+            <div class="modal-subtitle"><h3>CMO</h3></div>
+        </div>
+
+        <div class="modal-body col-sm-7 col-md-7">
+            <p>Cooler than the other side of the pillow, Teresa has a knack for marketing. Her effort in displaying our product to the public eye will be essential. We can't wait.</p>
+
+            <p>We also suggest never going bowling with her unless you want to lose all your money.</p>
+
+            <p>Fair warning.</p>
+        </div>
+
+        <div class="team-pic col-sm-5 col-md-5">
+            <img src="img/teresa2.png" alt="Teresa Huff">
+        </div>
+
+        <div class="modal-footer col-sm-12">
+            <div class="modal-link">
+
+                <h3>
+
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="https://www.instagram.com/t_huff2/" target="_blank">Follow Teresa On Instagram</a>
+                    </span>
+
+                </h3>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Devin Description -->
+<div id="nick-description" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+            <div class="container">
+            <div class="modal-title"><h2>Nick Leyva</h2></div>
+            <div class="modal-subtitle"><h3>CCO / Photographer</h3></div>
+        </div>
+
+        <div class="modal-body col-sm-7 col-md-7">
+            <p>Nick decided somewhere down the line that photography was his calling; we wholeheartedly agree.</p>
+
+            <p>A couple notable work mentions include the Orlando City SC and athletics at the University of Central Florida.</p>
+
+            <p>Rumor has it that Nick is likely sipping on Avi&oacute;n and pineapple.</p>
+        </div>
+
+        <div class="team-pic col-sm-5 col-md-5">
+            <img src="img/nick2.png" alt="Nick Leyva">
+        </div>
+
+
+        <div class="modal-footer col-sm-12">
+            <div class="modal-link">
+
+                <h3>
+
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="http://www.nickleyvaphoto.com/" target="_blank">Visit Nick's Website</a>
+                    </span>
+
+                </h3>
+
+                <h3>
+
+                    <span class="input-group-btn">
+                        <a class="btn btn-personal" href="https://www.instagram.com/nickleyvaphoto/" target="_blank">Follow Nick On Instagram</a>
+                    </span>
+
+                </h3>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
 
             </div>
         </div>
@@ -226,27 +487,26 @@
 
     <!-- Contact Section -->
     <section id="contact-us" class="contact-section">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-4">
-                    <h1 class="contacttagline">Want to Discuss Advertising with Us? Let's Talk.</h1>
+                <div class="col-md-1"></div>
+                <div class="col-md-5 contact-left">
+                    <h1>Want to Talk Advertising Options?</h1><h2>Give Us a Shout.</h2>
 
                     <div class="contactinfo">
-                        <h4>Email</h4>
-                        <a href="mailto:info@thebarshark.com?Subject=Contact%Us" target="_top">info@thebarshark.com</a>
+                        <h3>Email</h3>
+                        <a href="mailto:info@thebarshark.com?Subject=Barshark%20-%20Contact%20Us" target="_top">info@thebarshark.com</a>
 
                         <hr class="contactseperator">
 
-                        <h4>Office Address</h4>
-                            Barshark <br>
-                            8926 SW 129 St <br>
-                            Miami, FL 33176
+                        <h3>Office Address</h3>
+                            <span>Barshark</span>
+                            <br>8926 SW 129 St
+                            <br>Miami, FL 33176
                     </div>
                 </div>
-                
-
-                    <div class="contact col-md-4">
+        
+                    <div class="contact col-md-5">
                         <form id="contact" name="contact" method="post"> 
                             <div id="contact-info">
                             
@@ -289,7 +549,7 @@
                             </div><!-- /end contact-info -->
                         </form><!-- /end form -->
                     </div><!-- /end col-md-4 -->
-                <div class="contact col-md-2"></div>
+                <div class="contact col-md-1"></div>
             </div><!-- /row -->
 
 
@@ -315,41 +575,83 @@
 
 
             <div class="col-md-6"></div><!-- /spacer -->
-        
-        </div><!-- /end row -->
-        </div><!-- /end container -->
     </section><!-- /end section -->
 
 
 
     <!-- Footer Section -->
-    <div class="fin col-lg-12"><img src="img/fin.png"></div>
+    <div class="fin col-lg-12"><img src="img/fin.png" alt="Barshark Fin"></div>
     <section id="footer" class="footer-section col-md-12">
+        <div class="container">
+            <div class="footer-info col-md-6">
+                Copyright © Barshark 2016 
+            </div>
 
+            <div class="footer-icon col-md-6">
+                <a href="https://twitter.com/thebarshark" target="blank_">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x "></i>
+                        <i class="fa fa-twitter fa-stack-1x "></i>
+                    </span>
+                </a>
 
-        <div class="footer-links col-md-6">
-            SITE MAP
-            <br>
-            Address
-            <br>
-            Phone
-            <br>
-            Copyright
+                <a href="https://www.facebook.com/thebarshark" target="blank_">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x "></i>
+                        <i class="fa fa-facebook fa-stack-1x "></i>
+                    </span>
+                </a>
+
+                <a href="https://www.instagram.com/thebarshark/" target="blank_">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x "></i>
+                        <i class="fa fa-instagram fa-stack-1x "></i>
+                    </span>
+                </a>
+            </div>
         </div>
 
-        <div class="footer-social col-md-6">
-            <a class="twitter-timeline"  href="https://twitter.com/thebarshark" data-widget-id="689300955628744704">Tweets by @thebarshark</a>
-
-            <script>
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-            </script>
-          
-        </div>
     </section>
 
 
 
 
+
+
+
+
+
+    <script>
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+         
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+         
+          return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#loadingDiv").bind("ajaxSend", function() {
+            $(this).show();
+        }).bind("ajaxStop", function() {
+            $(this).hide();
+        }).bind("ajaxError", function() {
+            $(this).hide();
+        });
+     
+         });
+    </script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -367,5 +669,4 @@
     <script src="validate.js"></script>
 
 </body>
-
 </html>
