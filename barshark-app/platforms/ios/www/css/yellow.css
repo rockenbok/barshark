@@ -108,3 +108,7 @@ background:#2d2e3e;
 .close_popup_button a{
 background-color:#ffcc5f;
 }
+#map_canvas {
+    height: 200px;
+    width: 100%;
+}
