@@ -12,14 +12,15 @@ $mail = new PHPMailer;
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'localhost';  // Specify main and backup SMTP servers                               // Enable SMTP authentication
-$mail->Username = '';                 // SMTP username
-$mail->Password = '';                           // SMTP password
+$mail->Host = 'localhost';  					  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = '';             // SMTP username
+$mail->Password = '';                       // SMTP password
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;                                    // TCP port to connect to
 
-$mail->FromName = '';
-$mail->addAddress('', '');     // Add a recipient
+$mail->FromName = 'thebarshark.com';
+$mail->addAddress('info@thebarshark.com', 'Barshark');   // Add a recipient
 
 $mail->isHTML(true);                                  // Set email format to HTML
 
