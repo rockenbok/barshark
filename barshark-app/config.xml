@@ -68,6 +68,10 @@
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <plugin name="cordova-plugin-whitelist" version="1" />
+    <plugin name="com.phonegap.plugins.facebookconnect" spec="0.4.0"> source="pgb">
+    <param name="APP_ID" value="..." />
+    <param name="APP_NAME" value="..." />
+    </gap:plugin>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
