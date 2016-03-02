@@ -388,7 +388,7 @@ class FGMembersite
         }   
         $confirmcode = $this->SanitizeForSQL($_GET['code']);
         
-        $result = mysql_query("Select firstName, email from $this->tablename where confirmcode='$confirmcode'",$this->connection);   
+        $result = mysql_query("Select * from $this->tablename where confirmcode='$confirmcode'",$this->connection);   
         if(!$result || mysql_num_rows($result) <= 0)
         {
             $this->HandleError("Wrong confirm code.");
@@ -500,7 +500,7 @@ class FGMembersite
 
         $mailer->From = "Barshark";         
         
-        $mailer->Body ="A new user registered with Barshark"."\r\n".
+        $mailer->Body ="A new user completed with Barshark"."\r\n".
         "Name: ".$user_rec['firstName']." ".$user_rec['lastName']."\r\n".
         "Email address: ".$user_rec['email']."\r\n";
         
@@ -566,7 +566,7 @@ class FGMembersite
         $mailer->Body ="Hello ".$user_rec['firstName']."\r\n\r\n".
         "Your password is reset successfully. ".
         "Here is your updated login:\r\n".
-        "email:".$user_rec['email']."\r\n".
+        "email: ".$user_rec['email']."\r\n".
         "password: $new_password\r\n".
         "\r\n".
         "Login here: http://thebarshark.com/Barshark-App/www/\r\n".
