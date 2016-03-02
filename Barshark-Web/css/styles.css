@@ -539,14 +539,6 @@ h1 span {
     padding-top: 60px;
 }
 
-.about-icons img {
-    opacity: .7;
-}
-
-.about-icons img:hover {
-    opacity: 1;
-}
-
 .about-icons p {
     font-weight: 300;
     text-indent: 20px;
@@ -912,7 +904,7 @@ input[type=text]:focus, textarea:focus {
   color: #231f20;
   border: 0;
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 4px !important;
+  border-radius: 0px !important;
   font-size: 14px;
 }
 
