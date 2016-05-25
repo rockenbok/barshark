@@ -163,11 +163,33 @@ class FGMembersite
     {
         return isset($_SESSION['name_of_user'])?$_SESSION['name_of_user']:'';
     }
+
+    function UserLastName()
+    {
+        return isset($_SESSION['last_name_of_user'])?$_SESSION['last_name_of_user']:'';
+    }
+
+    function UserPassword()
+    {
+        return isset($_SESSION['pass_of_user'])?$_SESSION['pass_of_user']:'';
+    }
     
     function UserEmail()
     {
         return isset($_SESSION['email_of_user'])?$_SESSION['email_of_user']:'';
     }
+
+    function UserGender()
+    {
+        return isset($_SESSION['gender_of_user'])?$_SESSION['gender_of_user']:'';
+    }
+
+    function UserYear()
+    {
+        return isset($_SESSION['year_of_user'])?$_SESSION['year_of_user']:'';
+    }
+
+    
     
     function LogOut()
     {
@@ -241,7 +263,7 @@ class FGMembersite
         return true;
     }
     
-    function ChangePassword()
+    function UpdateAccount()
     {
         if(!$this->CheckLogin())
         {
@@ -249,14 +271,15 @@ class FGMembersite
             return false;
         }
         
-        if(empty($_POST['oldpwd']))
+        if(empty($_POST['newEmail']))
         {
-            $this->HandleError("Old password is empty!");
+            $this->HandleError("Email field is empty!");
             return false;
         }
-        if(empty($_POST['newpwd']))
+
+        if(empty($_POST['newPassword']))
         {
-            $this->HandleError("New password is empty!");
+            $this->HandleError("Password field is empty!");
             return false;
         }
         
@@ -266,19 +289,110 @@ class FGMembersite
             return false;
         }
         
-        $pwd = trim($_POST['oldpwd']);
+        $newemail = trim($_POST['newEmail']);
+        $newpwd = trim($_POST['newPassword']);
         
-        if($user_rec['password'] != md5($pwd))
-        {
-            $this->HandleError("The old password does not match!");
-            return false;
-        }
-        $newpwd = trim($_POST['newpwd']);
-        
-        if(!$this->ChangePasswordInDB($user_rec, $newpwd))
+        if(!$this->ChangeAccountInDB($user_rec, $newemail, $newpwd))
         {
             return false;
         }
+
+        if(false == $this->SendUpdatedAccount($user_rec, $newemail, $newpwd))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    function UpdateProfile()
+    {
+        if(!$this->CheckLogin())
+        {
+            $this->HandleError("Not logged in!");
+            return false;
+        }
+        
+        if(empty($_POST['newfirstName']))
+        {
+            $this->HandleError("First Name field is empty!");
+            return false;
+        }
+
+        if(empty($_POST['newlastName']))
+        {
+            $this->HandleError("Last Name field is empty!");
+            return false;
+        }
+
+        if(empty($_POST['newgender']))
+        {
+            $this->HandleError("Gender field is empty!");
+            return false;
+        }
+
+        if(empty($_POST['newbirthYear']))
+        {
+            $this->HandleError("Birth Year field is empty!");
+            return false;
+        }
+        
+        $user_rec = array();
+        if(!$this->GetUserFromEmail($this->UserEmail(),$user_rec))
+        {
+            return false;
+        }
+        
+        $newfirst = trim($_POST['newfirstName']);
+        $newlast = trim($_POST['newlastName']);
+        $newgender = trim($_POST['newgender']);
+        $newyear = trim($_POST['newbirthYear']);
+        
+        if(!$this->ChangeProfileInDB($user_rec, $newfirst, $newlast, $newgender, $newyear))
+        {
+            return false;
+        }
+
+        if(false == $this->SendUpdatedProfile($user_rec, $newfirst, $newlast, $newgender, $newyear))
+        {
+            return false;
+        }
+        
+        return true;
+    }
+
+    function DeleteAccount()
+    {
+        if(!$this->CheckLogin())
+        {
+            $this->HandleError("Not logged in!");
+            return false;
+        }
+
+        if(empty($_POST['delPassword']))
+        {
+            $this->HandleError("Password field is empty!");
+            return false;
+        }
+        
+        $user_rec = array();
+        if(!$this->GetUserFromEmail($this->UserEmail(),$user_rec))
+        {
+            return false;
+        }
+        
+        $delpwd = trim($_POST['delPassword']);
+        
+        if(!$this->DeleteAccountInDB($user_rec, $delpwd))
+        {
+            return false;
+        }
+
+        if(false == $this->SendDeletedAccount($user_rec))
+        {
+            return false;
+        }
+
         return true;
     }
     
@@ -373,9 +487,12 @@ class FGMembersite
         
         $_SESSION['name_of_user']  = $row['firstName'];
         $_SESSION['last_name_of_user']  = $row['lastName'];
+        $_SESSION['pass_of_user'] = $row['password'];
         $_SESSION['email_of_user'] = $row['email'];
         $_SESSION['gender_of_user'] = $row['gender'];
+        $_SESSION['year_of_user'] = $row['birthYear'];
         
+
         return true;
     }
     
@@ -419,13 +536,67 @@ class FGMembersite
         }
         return $new_password;
     }
-    
-    function ChangePasswordInDB($user_rec,$new_password)
+
+    function ChangePasswordInDB($user_rec, $new_password)
     {
-        $new_password = $this->SanitizeForSQL($new_password);
+        $newpwd = $this->SanitizeForSQL($new_password);
         $email = $user_rec['email'];
         
-        $qry = "Update $this->tablename Set password='$new_password' where email='$email'";
+        $qry = "Update $this->tablename Set password='$newpwd' Where  email='$email'";
+        
+        if(!mysql_query( $qry ,$this->connection))
+        {
+            $this->HandleDBError("Error updating the password \nquery:$qry");
+            return false;
+        }     
+        return true;
+    }
+    
+    function ChangeAccountInDB($user_rec, $newemail, $newpwd)
+    {
+        $new_password = $this->SanitizeForSQL($newpwd);
+        $new_email = $this->SanitizeForSQL($newemail);
+        $email = $user_rec['email'];
+        
+        $qry = "Update $this->tablename Set password='$new_password', email='$new_email' where email='$email'";
+        
+        if(!mysql_query($qry,$this->connection))
+        {
+            $this->HandleDBError("Error updating the password \nquery:$qry");
+            return false;
+        }     
+        return true;
+    }
+
+    function DeleteAccountInDB($user_rec, $delpwd)
+    {
+        $email = $user_rec['email'];
+
+        if($delpwd != $user_rec['password'])
+        {
+            $this->HandleDBError("Password does not match!");
+            return false;
+        }
+        
+        $qry = "Delete From $this->tablename where email='$email'";
+        
+        if(!mysql_query($qry,$this->connection))
+        {
+            $this->HandleDBError("Error updating the password \nquery:$qry");
+            return false;
+        }     
+        return true;
+    }
+
+    function ChangeProfileInDB($user_rec, $newfirst, $newlast, $newgender, $newyear)
+    {
+        $new_first = $this->SanitizeForSQL($newfirst);
+        $new_last = $this->SanitizeForSQL($newlast);
+        $new_gen = $this->SanitizeForSQL($newgender);
+        $new_year = $this->SanitizeForSQL($newyear);
+        $email = $user_rec['email'];
+        
+        $qry = "Update $this->tablename Set firstName='$new_first', lastName='$new_last', gender='$new_gen', birthYear='$new_year' where email='$email'";
         
         if(!mysql_query($qry,$this->connection))
         {
@@ -580,7 +751,110 @@ class FGMembersite
             return false;
         }
         return true;
+    }
+
+    function SendUpdatedAccount($user_rec, $newemail, $newpwd)
+    {
+        $email = $user_rec['email'];
+        
+        $mailer = new PHPMailer();
+        
+        $mailer->CharSet = 'utf-8';
+        
+        $mailer->AddAddress($email,$user_rec['firstName'],$user_rec['lastName']);
+
+        $mailer->AddAddress($newemail,$user_rec['firstName'],$user_rec['lastName']);
+        
+        $mailer->Subject = "Your Updated Account for Barshark";
+
+        $mailer->From = "Barshark";
+        
+        $mailer->Body ="Hello ".$user_rec['firstName']."\r\n\r\n".
+        "Your profile with Barshark has recently been updated. ".
+        "Here is your updated account information:\r\n".
+        "Name: ".$user_rec['firstName']." ".$user_rec['lastName']."\r\n".
+        "eMail: ".$newemail."\r\n".
+        "Password: ".$newpwd."\r\n".
+        "Gender: ".$user_rec['gender']."\r\n".
+        "Birth Year: ".$user_rec['birthYear']."\r\n".
+        "\r\n".
+        "Login here: http://thebarshark.com/Barshark-App/www/\r\n".
+        "\r\n".
+        "Regards,\r\n".
+        "The Barshark Team\r\n".
+        $this->sitename;
+        
+        if(!$mailer->Send())
+        {
+            return false;
+        }
+        return true;
+    }
+
+    function SendDeletedAccount($user_rec)
+    {
+        $email = $user_rec['email'];
+        
+        $mailer = new PHPMailer();
+        
+        $mailer->CharSet = 'utf-8';
+        
+        $mailer->AddAddress($email,$user_rec['firstName'],$user_rec['lastName']);
+        
+        $mailer->Subject = "Your Account for Barshark has been Deleted";
+
+        $mailer->From = "Barshark";
+        
+        $mailer->Body ="Hello ".$user_rec['firstName']."\r\n\r\n".
+        "Your profile with Barshark has been deleted. \r\n".
+        "We hope you consider joining us again soon. \r\n".
+        "\r\n".
+        "Regards,\r\n".
+        "The Barshark Team\r\n".
+        $this->sitename;
+        
+        if(!$mailer->Send())
+        {
+            return false;
+        }
+        return true;
     }    
+
+    function SendUpdatedProfile($user_rec, $newfirst, $newlast, $newgender, $newyear)
+    {
+        $email = $user_rec['email'];
+        
+        $mailer = new PHPMailer();
+        
+        $mailer->CharSet = 'utf-8';
+        
+        $mailer->AddAddress($email,$user_rec['firstName'],$user_rec['lastName']);
+        
+        $mailer->Subject = "Your Updated Account for Barshark";
+
+        $mailer->From = "Barshark";
+        
+        $mailer->Body ="Hello ".$user_rec['firstName']."\r\n\r\n".
+        "Your profile with Barshark has recently been updated. ".
+        "Here is your updated account information:\r\n".
+        "Name: ".$newfirst." ".$newlast."\r\n".
+        "eMail: ".$user_rec['email']."\r\n".
+        "Password: ".$user_rec['password']."\r\n".
+        "Gender: ".$newgender."\r\n".
+        "Birth Year: ".$newyear."\r\n".
+        "\r\n".
+        "Login here: http://thebarshark.com/Barshark-App/www/\r\n".
+        "\r\n".
+        "Regards,\r\n".
+        "The Barshark Team\r\n".
+        $this->sitename;
+        
+        if(!$mailer->Send())
+        {
+            return false;
+        }
+        return true;
+    }   
     
     function ValidateRegistrationSubmission()
     {
@@ -650,6 +924,7 @@ class FGMembersite
         }
         return true;
     }
+
     function GetAbsoluteURLFolder()
     {
         $scriptFolder = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
@@ -717,7 +992,7 @@ class FGMembersite
     function IsFieldUnique($formvars,$fieldname)
     {
         $field_val = $this->SanitizeForSQL($formvars[$fieldname]);
-        $qry = "select username from $this->tablename where $fieldname='".$field_val."'";
+        $qry = "select email from $this->tablename where $fieldname='".$field_val."'";
         $result = mysql_query($qry,$this->connection);   
         if($result && mysql_num_rows($result) > 0)
         {
