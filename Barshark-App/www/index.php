@@ -92,6 +92,33 @@
      }
   }
 
+  if(isset($_POST['submittedProfilePic']))
+  {
+     if($fgmembersite->UploadPic())
+     {
+        echo '<script>'
+           , 'function myFunction(){'
+           , 'document.getElementById("features").click();'
+           , 'document.getElementById("openprofile").click();'
+           , '}'
+           , '</script>'
+        ;
+     }
+  }
+
+  if(isset($_POST['submittedLocation']))
+  {
+     if($fgmembersite->ChangeLocation())
+     {
+        echo '<script>'
+           , 'function myFunction(){'
+           , 'document.getElementById("features").click();'
+           , '}'
+           , '</script>'
+        ;
+     }
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -102,6 +129,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="images/apple-touch-startup-image-640x1096.png">
+<link href="images/logo/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
 <title>Barshark</title>
 <link rel="stylesheet" href="css/framework7.css">
 <link rel="stylesheet" href="style.css">
@@ -117,7 +145,7 @@
 
     <div class="panel-overlay"></div>
 
-    <div class="panel panel-left panel-reveal">
+    <!--<div class="panel panel-left panel-reveal">
          <div class="cartcontainer">
             <h2>CART <span>(3 ITEMS)</span></h2>
             <a href="#" class="closecart close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
@@ -177,13 +205,124 @@
               </div>
             
               <a href="checkout.html" class="checkout close-panel">PROCEED TO CHECKOUT</a>           </div>
+    </div>-->
+
+
+
+
+
+<div class="panel panel-left panel-reveal">
+  <div class="cartcontainer">
+    <h2>CHANGE LOCATION</span></h2>
+    <a href="#" class="close-location close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
+
+      <a href="#" data-popup=".popup-tampa-location" class="close-panel open-popup">
+        <div id="tampa" class="location-image"></div>
+        <div class="location-name"><h3>TAMPA</h3></div>
+      </a>
+
+      <a href="#" data-popup=".popup-orlando-location" class="close-panel open-popup">
+        <div id="orlando" class="location-image"></div>
+        <div class="location-name"><h3>ORLANDO</h3></div>
+      </a>
+
+      <a href="#" data-popup=".popup-miami-location" class="close-panel open-popup">
+        <div id="miami" class="location-image"></div>
+        <div class="location-name"><h3>MIAMI</h3></div>
+      </a>
+
+  </div>
+</div>
+
+
+
+<!-- TAMPA LOCATION DISTRICT POPUP -->
+    <div class="popup popup-tampa-location">
+      <div class="content-block-login">
+        <h4>CHOOSE DISTRICT</h4>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>ALL</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>DOWNTOWN</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>SOHO</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>YBOR</h3></div>
+        </a>
+
+      </div>
+      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
     </div>
+
+
+
+
+<!-- ORLANDO LOCATION DISTRICT POPUP -->
+    <div class="popup popup-orlando-location">
+      <div class="content-block-login">
+        <h4>CHOOSE DISTRICT</h4>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>ALL</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>DOWNTOWN</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>UCF</h3></div>
+        </a>
+
+      </div>
+      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+    </div>
+
+
+
+
+<!-- MIAMI LOCATION DISTRICT POPUP -->
+    <div class="popup popup-miami-location">
+      <div class="content-block-login">
+        <h4>CHOOSE DISTRICT</h4>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>ALL</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>BRICKELL</h3></div>
+        </a>
+
+        <a href="features.php" class="close-popup">
+          <div class="location-district"><h3>DOWNTOWN</h3></div>
+        </a>
+
+      </div>
+      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+    </div>
+
+
+
+
+
+
+
+
+
 
     <div class="panel panel-right panel-reveal"> 
           <div class="user_login_info">
                 <div class="user_thumb">
                 <!--<img src="images/profile.jpg" alt="" title="" />-->
-                  <div class="user_avatar"><img src="images/avatar.jpg" alt="" title="" /></div>
+                  <div class="user_avatar"><img src="images/avatar.jpg" alt="" title=""/></div>
                   <div class="user_details">
                    <p>Hi, <span><?php echo $fgmembersite->UserFullName(); ?></span>!</p>
                   </div>    
@@ -210,10 +349,10 @@
 
           <div data-page="index" class="page homepage">
             <div class="page-content">
-					     <div class="logo"><img src="images/logo/logo.svg" alt=""><span>Making every night, the best night.</span></div>
+					     <div class="logo"><img src="images/icons/white/logo.svg" alt=""><span>Making every night, the best night.</span></div>
                   <nav class="main-nav">
                       <ul>
-                          <li><a href="#" id="loginbtn" data-popup=".popup-login" class="open-popup"><img src="images/icons/black/user.png" alt="" title="" /><span>LOGIN</span></a></li>
+                          <li><a href="#" id="loginbtn" data-popup=".popup-login" class="open-popup"><img src="images/icons/login/login.svg" alt="" title="" /><!--<span>LOGIN</span>--></a></li>
                           
                           <li style="visibility: hidden;"><a href="features.php" id="features"><img src="images/icons/yellow/settings.png" alt="" title="" /><span>FEATURES</span></a></li>
                           <!--<li><a href="shop.html"><img src="images/icons/yellow/shop.png" alt="" title="" /><span>SHOP</span></a></li>-->
@@ -246,6 +385,10 @@
           <div class="form_row">
           <div class="form_row_icon"><img src="images/icons/white/lock.png" alt="" title="" /></div>
           <input type="password" name="password" value="" class="form_input required" placeholder="password" />
+          </div>
+          <div class="remember_me" style="width: 50%; float: left; font-size: 12px;">
+          <!--<div class="form_row_icon">-->Stay Logged In<!--</div>-->
+          <input type="checkbox" name="loginCheck" value="value1" checked/> 
           </div>
           <div class="forgot_pass"><a href="#" id="forgotbtn" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
           <input type="submit" name="submitLogin" class="form_submit" id="submitLogin" value="SIGN IN" />
@@ -315,7 +458,7 @@
             <span id='register_email_errorloc' class='error'></span>
             </div>
             <div class="form_row">
-            <div class="form_row_icon"><img src="images/icons/white/search.png" alt="" title="" /></div>
+            <div class="form_row_icon"><img src="images/icons/white/gender.png" alt="" title="" /></div>
               <!--<select class="form_input required" id="gender" name="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -526,7 +669,7 @@
     <div class="popup popup-profile">
     <div class="content-block-login">
       <h4>EDIT PROFILE</h4>
-            <div class="profileform" id='fg_membersite'>
+            <div class="profileform loginform" id='fg_membersite'>
             <form id="profileForm" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method="post" accept-charset='UTF-8'>
             <input type='hidden' name='submittedProfile' id='submittedProfile' value='1'/>
             <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
@@ -541,9 +684,9 @@
             <span id='register_name_errorloc' class='error'></span>
             </div>
             <div class="form_row">
-            <div class="form_row_icon"><img src="images/icons/white/search.png" alt="" title="" /></div>
+            <div class="form_row_icon"><img src="images/icons/white/gender.png" alt="" title="" /></div>
 
-                <div id="newgender" class="gender form_input required" name="newgender">
+                <div id="newgender" style="margin-left: 18px" class="gender form_input required" name="newgender">
                    <?php
                         if ($fgmembersite->UserGender() == "m")
                         {
@@ -584,7 +727,7 @@
             </div>
             <div class="form_row">
             <div class="form_row_icon"><img src="images/icons/white/blog.png" alt="" title="" /></div>
-              <select class="form_input required" id="newbirthYear" name="newbirthYear">
+              <select class="form_input required" id="newbirthYear" style="margin: 0px 25px 25px 18px;" name="newbirthYear">
                 <option value='<?php echo $fgmembersite->UserYear(); ?>'><?php echo $fgmembersite->UserYear(); ?></option>
                 <option value="1995">1995</option>
                 <option value="1994">1994</option>
@@ -636,7 +779,8 @@
             </div>
 
             <div class="form_row">
-              <a href="#" data-popup=".popup-profilepic" class="open-popup">UPLOAD PROFILE PIC</a>
+              <div class="form_row_icon"><img src="images/icons/white/photos.png" alt="" title="" /></div>
+              <a href="#" data-popup=".popup-profilepic" id="edit-picture" class="open-popup" style="margin-left: 18px">Edit Profile Picture</a>
             </div>
 
             <input type="submit" name="submitProfile" class="form_submit" id="submitProfile" value="SAVE CHANGES" />
@@ -666,7 +810,7 @@
     <div class="content-block-login">
       <h4>PROFILE UPDATED!</h4>
             <div class="profileupdatedform" id='fg_membersite'>
-            <p>You're profile has been updated! We've sent you an email with your new account information. You may have to log out and log back in to notice these changes.</p>
+            <p>You're profile has been updated! We've sent you an email with your new account information. You may have to restart the app to notice these changes.</p>
             </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
     </div>
@@ -676,11 +820,12 @@
     <div class="popup popup-profilepic">
     <div class="content-block-login">
       <h4>UPLOAD NEW PHOTO</h4>
-            <div class="profilepicform" id='fg_membersite'>
-            <form id="profilePicForm" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method="post" accept-charset='UTF-8'>
-              <label for="file"><span id="IL_AD6" class="IL_AD">Filename</span>:</label>
-              <input type="file" name="profilepic" id="profilepic"><br>
-              <input type="submit" name="submitProfilePic" value="UPLOAD">
+            <div class="loginform" id='fg_membersite'>
+            <form id="profilePicForm" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method="post" enctype="multipart/form-data" accept-charset='UTF-8'>
+              <input type='hidden' name='submittedProfilePic' id='submittedProfilePic' value='1'/>
+              <div class="form_row_icon"><img src="images/icons/white/photos.png" alt="" title="" /></div>
+              <input type="file" class="photo-upload" name="profilepic" id="profilepic"><br>
+              <input type="submit" class="form_submit" name="submitProfilePic" value="UPLOAD">
             </form>
             </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
@@ -691,7 +836,7 @@
     <div class="popup popup-account">
     <div class="content-block-login">
       <h4>UPDATE ACCOUNT</h4>
-            <div class="accountform" id='fg_membersite'>
+            <div class="accountform loginform" id='fg_membersite'>
             <form id="accountForm" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method="post" accept-charset='UTF-8'>
             <input type='hidden' name='submittedAccount' id='submittedAccount' value='1'/>
             <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
@@ -708,6 +853,10 @@
             <input type="submit" name="submitAccount" class="form_submit" id="submitAccount" value="SAVE CHANGES" />
             </form>
 
+            <div class="delete-account">
+              <a href="#" id="deleteaccount" data-popup=".popup-delete" class="open-popup">DELETE ACCOUNT</a>
+            </div>
+
             <!-- client-side Form Validation-->
 
             <script type='text/javascript'>
@@ -722,10 +871,6 @@
 
             </script>
             </div>
-
-            <div>
-              <a href="#" id="deleteaccount" data-popup=".popup-delete" class="open-popup">DELETE ACCOUNT</a>
-            </div>
     </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
     </div>
@@ -735,7 +880,7 @@
     <div class="content-block-login">
       <h4>ACCOUNT UPDATED!</h4>
             <div class="profileupdatedform" id='fg_membersite'>
-            <p>You're account has been updated! We've sent you an email with your new account information. You may have to log out and log back in to notice these changes.</p>
+            <p>You're account has been updated! We've sent you an email with your new account information. You may have to restart the app to notice these changes.</p>
             </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
     </div>
@@ -750,7 +895,7 @@
             <input type='hidden' name='submittedDelete' id='submittedDelete' value='1'/>
             <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
             <div id="gender" class="gender form_input required" name="gender">
-              <ul>
+              <!--<ul>
                 <li>
                   <input type="radio" id="no-option" name="deleteYN" value="no">
                   <label for="no-option">No</label>
@@ -774,14 +919,13 @@
                 function noFunction() {
                     document.getElementById("deletepwd").style.visibility = "hidden";
                 }
-              </script>
+              </script>-->
             </div>
-            <div class="form_row" id="deletepwd" style="visibility: hidden;">
+            <div class="form_row" id="deletepwd" style="visibility: visible;">
             <div class="form_row_icon"><img src="images/icons/white/lock.png" alt="" title="" /></div>
             <input type="password" name="delPassword" id="delPassword" value="" class="form_input required" />
             <div id='register_password_errorloc' class='error' style='clear:both'></div>
-            <br/>
-            <br/>
+
             <input type="submit" name="submitDelete" class="form_submit" id="submitDelete" value="DELETE ACCOUNT" />
             </div>
             </form>
@@ -810,6 +954,6 @@
 <script type="text/javascript" src="js/email.js"></script>
 <script type='text/javascript' src='js/gen_validatorv31.js'></script>
 <script type="text/javascript" src="js/pwdwidget.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXre7xZaF3rVGNwzRS8pddl5JsPItKokg&libraries=places"></script> 
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXre7xZaF3rVGNwzRS8pddl5JsPItKokg&libraries=places"></script>-->
   </body>
 </html>

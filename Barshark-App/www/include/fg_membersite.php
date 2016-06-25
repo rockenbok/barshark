@@ -25,7 +25,7 @@ class FGMembersite
 {
     var $admin_email;
     var $from_address;
-    
+
     var $username;
     var $pwd;
     var $database;
@@ -134,29 +134,79 @@ class FGMembersite
         
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
+        $loginCheck = $_POST['loginCheck'];
         
         if(!isset($_SESSION)){ session_start(); }
         if(!$this->CheckLoginInDB($email,$password))
         {
             return false;
         }
-        
-        $_SESSION[$this->GetLoginSessionVar()] = $email;
-        
+
+        $sessionvar = $this->GetLoginSessionVar();
+
+        if($loginCheck == "value1")
+        {
+            setcookie('barshark_session_cookie', $sessionvar, time() + 172800, '/'); // 172800 = 2 days
+            setcookie('barshark_email_cookie', $email, time() + 172800, '/'); // 172800 = 2 days
+        }
+        else
+        {
+            setcookie('barshark_email_cookie', $email, time() + 172800, '/'); // 172800 = 2 days
+            $_SESSION[$sessionvar] = $email;
+        }
+
         return true;
+
     }
     
     function CheckLogin()
     {
-         if(!isset($_SESSION)){ session_start(); }
+        if(isset($_COOKIE['barshark_session_cookie'])&&isset($_COOKIE['barshark_email_cookie']))
+        {
+            if(!$this->DBLogin())
+            {
+                $this->HandleError("Database login failed!");
+                return false;
+            }          
+            $email = $_COOKIE['barshark_email_cookie'];
+            $qry = "Select * from $this->tablename where email='$email'";
+            
+            $result = mysql_query($qry,$this->connection);
+            
+            if(!$result || mysql_num_rows($result) <= 0)
+            {
+                $this->HandleError("Error logging in.");
+                return false;
+            }
+            
+            $row = mysql_fetch_assoc($result);
+            
+            
+            $_SESSION['name_of_user']  = $row['firstName'];
+            $_SESSION['last_name_of_user']  = $row['lastName'];
+            $_SESSION['pass_of_user'] = $row['password'];
+            $_SESSION['email_of_user'] = $row['email'];
+            $_SESSION['gender_of_user'] = $row['gender'];
+            $_SESSION['year_of_user'] = $row['birthYear'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['default_city'] = $row['defaultcity'];
+            $_SESSION['default_district'] = $row['defaultdistrict'];
 
-         $sessionvar = $this->GetLoginSessionVar();
-         
-         if(empty($_SESSION[$sessionvar]))
-         {
-            return false;
-         }
-         return true;
+            return true; 
+        }
+        else
+        {
+            if(!isset($_SESSION)){ session_start(); }
+
+            $sessionvar = $this->GetLoginSessionVar();
+
+            if(empty($_SESSION[$sessionvar]))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
     
     function UserFullName()
@@ -189,17 +239,139 @@ class FGMembersite
         return isset($_SESSION['year_of_user'])?$_SESSION['year_of_user']:'';
     }
 
-    
+    function UserCity()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }   
+        $email = $_COOKIE['barshark_email_cookie'];
+        $qry = "Select * from $this->tablename where email='$email'";
+        
+        $result = mysql_query($qry,$this->connection);
+        
+        if(!$result || mysql_num_rows($result) <= 0)
+        {
+            $this->HandleError("Error logging in.");
+            return false;
+        }
+        
+        $row = mysql_fetch_assoc($result);
+
+        $_SESSION['default_city'] = $row['defaultcity'];
+        $defaultcity = $_SESSION['default_city'];
+        return $defaultcity;
+    }
+
+    function UserDistrict()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }   
+        $email = $_COOKIE['barshark_email_cookie'];
+        $qry = "Select * from $this->tablename where email='$email'";
+        
+        $result = mysql_query($qry,$this->connection);
+        
+        if(!$result || mysql_num_rows($result) <= 0)
+        {
+            $this->HandleError("Error logging in.");
+            return false;
+        }
+        
+        $row = mysql_fetch_assoc($result);
+
+        $_SESSION['default_district'] = $row['defaultdistrict'];
+
+        if($_SESSION['default_district']==NULL)
+        {
+            $defaultdistrict = '';
+        }
+        else
+        {
+            $defaultdistrict = ' - ' . $_SESSION['default_district'];
+        }
+        
+        return $defaultdistrict;
+    }
+
+    function UserStyle()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }   
+        $email = $_COOKIE['barshark_email_cookie'];
+        $qry = "Select * from $this->tablename where email='$email'";
+        
+        $result = mysql_query($qry,$this->connection);
+        
+        if(!$result || mysql_num_rows($result) <= 0)
+        {
+            $this->HandleError("Error logging in.");
+            return false;
+        }
+        
+        $row = mysql_fetch_assoc($result);
+
+        $_SESSION['default_style'] = $row['defaultstyle'];
+
+        if($_SESSION['default_style']==NULL)
+        {
+            $defaultstyle = '';
+        }
+        else
+        {
+            $defaultstyle = ' - ' . $_SESSION['default_style'];
+        }
+        
+        return $defaultstyle;
+    }
+
+    function UserPic()
+    {
+        if(!$this->CheckLogin())
+        {
+            $this->HandleError("Not logged in!");
+            return false;
+        }
+
+        $email = $_COOKIE['barshark_email_cookie'];
+
+        $select_image="select * from barsharkusers where email='$email'";
+
+        $var=mysql_query($select_image);
+
+        if($row=mysql_fetch_array($var))
+        {
+            $image_name=$row["imagename"];
+            $image_content=$row["imagecontent"];
+        }
+
+        return $image_content;
+    }
     
     function LogOut()
     {
-        session_start();
+        if(isset($_COOKIE['barshark_session_cookie'])&&isset($_COOKIE['barshark_email_cookie']))
+        {
+            setcookie('barshark_session_cookie', '', time() - 172800, '/');
+            setcookie('barshark_email_cookie', '', time() - 172800, '/');
+        }
+        else
+        {
+            session_start();
+            
+            $sessionvar = $this->GetLoginSessionVar();
         
-        $sessionvar = $this->GetLoginSessionVar();
+            $_SESSION[$sessionvar]=NULL;
         
-        $_SESSION[$sessionvar]=NULL;
-        
-        unset($_SESSION[$sessionvar]);
+            unset($_SESSION[$sessionvar]);
+        }
     }
     
     function EmailResetPasswordLink()
@@ -361,6 +533,47 @@ class FGMembersite
         return true;
     }
 
+    function UploadPic()
+    {
+        if(!$this->CheckLogin())
+        {
+            $this->HandleError("Not logged in!");
+            return false;
+        }
+
+        $file = $_FILES['profilepic']['tmp_name'];
+        if(!isset($file))
+        {   
+            echo "no image";
+            return false;
+        }
+        else
+        {   
+
+            //Get the content of the image and then add slashes to it 
+            $imagetmp=addslashes (file_get_contents($_FILES['profilepic']['tmp_name']));    
+            $image_name = addslashes($_FILES['profilepic']['name']);
+            $image_size = getimagesize($_FILES['profilepic']['tmp_name']);
+
+            if($image_size==FALSE)
+            {
+                echo "not an image";
+                return false;
+            }
+
+            $email = $_COOKIE['barshark_email_cookie'];
+
+            $imagename=$_FILES["profilepic"]["name"]; 
+
+            //Insert the image name and image content in image_table
+            $insert_image="Update $this->tablename Set imagename='$imagename' and imagecontent='$imagetmp' Where email='$email'";
+
+            mysql_query($insert_image, $this->connection);
+
+            return true;
+        }
+    }
+
     function DeleteAccount()
     {
         if(!$this->CheckLogin())
@@ -395,6 +608,293 @@ class FGMembersite
 
         return true;
     }
+
+    function Locations()
+    {   
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }   
+        $email = $_COOKIE['barshark_email_cookie'];
+        $qry = "Select * from $this->tablename where email='$email'";
+        
+        $result = mysql_query($qry,$this->connection);
+        
+        if(!$result || mysql_num_rows($result) <= 0)
+        {
+            $this->HandleError("Error logging in.");
+            return false;
+        }
+        
+        $row = mysql_fetch_assoc($result);
+
+        $_SESSION['default_city'] = $row['defaultcity'];
+        $_SESSION['default_district'] = $row['defaultdistrict'];
+        $_SESSION['default_stlye'] = $row['defaultstyle'];
+
+        if($_SESSION['default_city']==NULL)
+        {
+            echo "0 Results";
+        }
+        else
+        {
+            $defaultcity = $_SESSION['default_city'];
+
+            if($_SESSION['default_district']==NULL)
+            {
+                if($_SESSION['default_style']==NULL)
+                {
+                    //query for city only;
+                    $qry = "Select * From locations where city='$defaultcity' and featured='y'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li class="featured">'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/black/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+
+                    $qry = "Select * From locations where city='$defaultcity' and featured='n'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/teal/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+                }
+                else
+                {
+                    $defaultstyle = $_SESSION['default_style'];
+
+                    //query for city and style;
+                    $qry = "Select * From locations where city='$defaultcity' and style='$defaultstyle' and featured='y'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li class="featured">'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/black/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+
+                    $qry = "Select * From locations where city='$defaultcity' and style='$defaultstyle' and featured='n'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/teal/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if($_SESSION['default_style']==NULL)
+                {
+                    $defaultdistrict = $_SESSION['default_district'];
+
+                    //query for city and district;
+                    $qry = "Select * From locations where city='$defaultcity' and district='$defaultdistrict' and featured='y'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li class="featured">'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/black/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+
+                    $qry = "Select * From locations where city='$defaultcity' and district='$defaultdistrict' and featured='n'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/teal/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+                }
+                else
+                {
+                    $defaultdistrict = $_SESSION['default_district'];
+                    $defaultstyle = $_SESSION['default_style'];
+
+                    //query for city district and style;
+                    $qry = "Select * From locations where city='$defaultcity' and district='$defaultdistrict' and style='$defaultstyle' and featured='y'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li class="featured">'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/black/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+
+                    $qry = "Select * From locations where city='$defaultcity' and district='$defaultdistrict' and style='$defaultstyle' and featured='n'";
+                    $result = mysql_query($qry,$this->connection);
+
+                    if (!$result || mysql_num_rows($result) <= 0) {
+                        echo "0 Results";
+                    } 
+                    else 
+                    {
+                        // output data of each row
+                        while($row = mysql_fetch_assoc($result)) {
+                            echo '<li>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">'
+                            ,    '<div class="feat_small_icon"><img src="images/icons/indicators/' . $row["volume"] . '.svg" alt="" title="" /></div>'
+                            ,    '<div class="feat_small_details">'
+                            ,    '<h4>' . $row["name"] . '</h4>'
+                            ,    '<a href="focus.php?search=' . $row["id"] . '">' . $row["pitch"] . '</a>'
+                            ,    '</div>'
+                            ,    '<span class="plus_icon"><img src="images/icons/teal/plus.png" alt="" title="" /></span>'
+                            ,    '</a>'
+                            ,    '</li>'
+                            ;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function focus($res)
+      {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }   
+
+        $id = $res;
+        $qry = "Select * from locations where id='$id'";
+        
+        $result = mysql_query($qry,$this->connection);
+        
+        if (!$result || mysql_num_rows($result) <= 0) {
+            echo "0 Results";
+        } 
+        else 
+        {
+            $row = mysql_fetch_assoc($result);
+
+            echo '<h2 class="page_title">' . $row["name"] . '</h2>'
+            ,    '<div class="page_content">'
+            ,    '<div class="contact_info">'
+            ,    'Hours: <span>' . $row["hours"] . '</span> <br />'
+            ,    'Phone: ' . $row["phone"] . ' <br />'
+            ,    'Menu: <a href="' . $row["menu"] . '" target="_blank">OPEN</a>'
+            ,    '</div>'
+            ,    '<h3>Our Location</h3>'
+            ,    '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.6251316836215!2d-80.34114568504981!3d25.65056428368738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9c6ecbeb5721f%3A0x669152096eaa540e!2s8926+SW+129th+St%2C+Miami%2C+FL+33176!5e0!3m2!1sen!2sus!4v1452033011970" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>'
+            ,    '<div class="clear"></div>'
+            ,    '</div>'
+            ;
+        }    
+      }
     
     //-------Public Helper functions -------------
     function GetSelfScript()
@@ -491,6 +991,9 @@ class FGMembersite
         $_SESSION['email_of_user'] = $row['email'];
         $_SESSION['gender_of_user'] = $row['gender'];
         $_SESSION['year_of_user'] = $row['birthYear'];
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['default_city'] = $row['defaultcity'];
+        $_SESSION['default_district'] = $row['defaultdistrict'];
         
 
         return true;

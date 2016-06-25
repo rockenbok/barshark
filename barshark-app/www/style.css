@@ -314,15 +314,14 @@ display:block;
 .main-nav ul li{
 width:50%;
 list-style:none;
-padding:10% 0;
-margin:25%;
+margin:15% 25%;
 display:inline-block;
 text-align:center;
 position:relative;
 }
 .main-nav ul li img{
 display:inline-block;
-max-width:100%;
+width:100%;
 }
 .main-nav ul li span{
 display:block;
@@ -679,7 +678,7 @@ position:relative;
 left:-100%;
 }
 ul.features_list_detailed li .feat_small_details{
-width:82%;
+width:75%;
 float:left;
 padding:0 0 0 3%;
 }
@@ -1901,8 +1900,9 @@ cursor:pointer;
 -webkit-appearance: none;
 }
 .forgot_pass{
-width:100%;
-text-align:right;
+width: 50%;
+float: right;
+text-align: right;
 }
 .forgot_pass a{
 color:#FFFFFF;
@@ -2120,9 +2120,9 @@ h2.page_title{
 padding:15px 0;
 font-size:12px;
 }
-.main-nav ul li img{
+/*.main-nav ul li img{
 max-width:30%;
-}
+}*/
 .main-nav ul li span{
 font-size:11px;
 }
@@ -2181,4 +2181,119 @@ max-width:80%;
 max-width:100%;
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.remember_me {
+	width: 50%;
+	float: left;
+	font-size: 12px;
+}
+
+#newgender, #edit-picture, .photo-upload {
+	margin-left: 18px
+}
+
+#newbirthYear {
+	margin: 0px 25px 25px 18px;
+}
+
+input[type='file'] {
+	color: transparent;
+}
+
+.delete-account {
+	background-color: red;
+	width:100%;
+	padding:5px 0; 
+	margin:15px 0 0 0; 
+	font-weight:300;
+	text-align:center;
+	cursor:pointer; 
+	font-size:12px;
+	color:#fff;
+	-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
+	border: none;
+	cursor:pointer;
+	-webkit-appearance: none;
+}
+
+.delete-account a {
+	display: block;
+}
+
+
+
+
+
+
+
+
+.location-image {
+	height: 100px;
+	width: 100%;
+	clear: both;
+}
+
+.location-name {
+	text-align: left;
+	padding-left: 15px;
+	color: #000;
+	background-color: #3ddcdc;
+	margin-bottom: 20px;
+}
+
+.location-district {
+	text-align: left;
+	padding-left: 15px;
+	height: 35px;
+	color: #000;
+	background-color: #3ddcdc;
+	margin-bottom: 20px;
+	padding-top: 15px;
+}
+
+#tampa {
+  background: url(images/city/tampa.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+#orlando {
+  background: url(images/city/orlando.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+#miami {
+  background: url(images/city/miami.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+a.close-location{
+width:15%;
+float:right;
+}
+a.close-location img{
+width:80%;
+display:block;
+}
+
+
+
 

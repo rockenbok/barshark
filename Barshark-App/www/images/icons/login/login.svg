@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="250px" height="250px" viewBox="0 0 250 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.2 (29753) - http://www.bohemiancoding.com/sketch -->
+    <title>Login Button</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="24.6009585%" x2="98.3354684%" y2="73.2916547%" id="linearGradient-1">
+            <stop stop-color="#C3F4F4" offset="0%"></stop>
+            <stop stop-color="#61B0CD" offset="100%"></stop>
+        </linearGradient>
+        <path d="M120.441125,25.4978939 C122.830573,24.1183452 126.704195,24.1180914 129.094083,25.4978939 L209.208729,71.7521061 C211.598177,73.1316548 213.535208,76.4861828 213.535208,79.2457877 L213.535208,171.754212 C213.535208,174.51331 211.598617,177.868091 209.208729,179.247894 L129.094083,225.502106 C126.704635,226.881655 122.831013,226.881909 120.441125,225.502106 L40.3264791,179.247894 C37.9370307,177.868345 36,174.513817 36,171.754212 L36,79.2457877 C36,76.4866904 37.9365911,73.1319086 40.3264791,71.7521061 L120.441125,25.4978939 Z" id="path-2"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-5" y="-5" width="187.535208" height="213.536863">
+            <rect x="31" y="19.4631372" width="187.535208" height="213.536863" fill="white"></rect>
+            <use xlink:href="#path-2" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Logos/Features" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Login-Button">
+            <g id="Polygon-1">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <use stroke="url(#linearGradient-1)" mask="url(#mask-4)" stroke-width="10" xlink:href="#path-2"></use>
+            </g>
+            <path d="M84.9447176,125.23363 C87.3304244,126.142478 89.6062921,127.00837 93.0420613,128.317382 C89.4437301,128.869021 87.0009069,129.242056 84.3384054,129.651263 C83.0862389,135.825549 82.242674,142.09479 80.4764602,148.094993 C78.8662179,153.563905 76.5661857,158.876821 73.9959491,164.00661 C71.4147285,169.159008 70,172.523101 70,172.523101 C70,172.523101 100.258495,155.797591 125.567637,162.164046 C165.869825,172.303802 179,171.254784 179,171.254784 C165.448043,147.6157 149.723467,125.068591 129.376859,105.046812 C119.816458,95.6372988 109.344391,87.1501986 96.8512838,80.8493067 C95.0718892,79.9517631 93.2727236,79.0157856 91.3812931,78.4053655 C87.3084566,77.0918319 83.9144262,79.0790884 84.0616107,82.7981294 C84.3274215,89.6122263 84.8304849,96.4331057 85.2500705,103.502675 C87.4600347,104.260048 89.6238663,105.001595 92.4423395,105.969224 C89.6941634,106.615817 87.4578379,107.142587 84.9359305,107.734921 C84.9403241,113.513564 84.9425209,119.147516 84.9447176,125.23363" id="Fin" fill="#3DDCDC"></path>
+        </g>
+    </g>
+</svg>

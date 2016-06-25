@@ -35,6 +35,31 @@ color: #232323;
 .contactform input.form_submit, .loginform input.form_submit, .profileform input.form_submit, .accountform input.form_submit, .commentform input.form_submit{ 
 background-color:#3ddcdc;
 }
+/*Red color of the delete submit buttons*/
+.deleteform input.form_submit {
+	background-color: red;
+	width:100%;
+	padding:5px 0; 
+	margin:15px 0 0 0; 
+	font-weight:300;
+	text-align:center;
+	cursor:pointer; 
+	font-size:12px;
+	color:#fff;
+	-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
+	border: none;
+	cursor:pointer;
+	-webkit-appearance: none;
+}
+.deleteform input.form_input {
+	padding: 10px 0 10px 3%;
+	width: 80%;
+	margin: 0 0 20px 5%;
+	border: none;
+	border-bottom: 1px solid #45535d;
+	background: none;
+	color: #b7bec2;
+}
 /*Yellow color of the cart item bullet*/
 .main-nav ul li div.cartitems{
 background-color:#ffcc5f;
@@ -83,9 +108,9 @@ background: #3ddcdc;
 /*===============================================*/
 /* MAIN NAV LINKS */
 /*===============================================*/	
-.main-nav ul li{
+/*.main-nav ul li{
 background: #fff;
-}
+}*/
 .main-nav ul li a{
 color:#231f20;
 }

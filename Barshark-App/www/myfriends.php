@@ -4,7 +4,7 @@
     
      <div class="navbarpages">
        <div class="navbar_left"><a href="features.php"><img src="images/icons/white/back.png" alt="" title="" /></a></div>
-       <div class="navbar_center" style="color: white;"><!--<h2>barshark</h2>--><img src="images/logo/logo.svg" alt="" title="" /></div>
+       <div class="navbar_center" style="color: white;"><!--<h2>barshark</h2>--><img src="images/icons/white/logo.svg" alt="" title="" /></div>
        <div class="navbar_right"><a href="#" data-panel="right" class="open-panel"><img src="images/icons/white/user.png" alt="" title="" /></a></div>
      </div>
      

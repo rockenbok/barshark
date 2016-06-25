@@ -1,22 +1,32 @@
+<?php
+     require_once("include/membersite_config.php");
+?>
+
 <div class="pages">
   <div data-page="features" class="page no-toolbar no-navbar">
     <div class="page-content">
     
      <div class="navbarpages">
-       <div class="navbar_left" style="visibility: hidden;"><a href="index.php"><img src="images/icons/white/home.png" alt="" title="" /></a></div>
-       <div class="navbar_center" style="color: white;"><!--<h2>barshark</h2>--><img src="images/logo/logo.svg" alt="" title="" /></div>
+       <div class="navbar_left"><a href="#" data-panel="left" class="open-panel"><img src="images/icons/white/map.png" alt="" title="" /></a></div>
+       <div class="navbar_center" style="color: white;"><!--<h2>barshark</h2>--><img src="images/icons/white/logo.svg" alt="" title="" /></div>
        <div class="navbar_right"><a href="#" data-panel="right" class="open-panel"><img src="images/icons/white/user.png" alt="" title="" /></a></div>
      </div>
      
      <div id="pages_maincontent">
       
-      <h2 class="page_title">Nearby Locations | Orlando - Winter Park</h2>
+      <h2 class="page_title">Nearby Locations | <?php echo $fgmembersite->UserCity();  echo $fgmembersite->UserDistrict(); echo $fgmembersite->UserStyle(); ?></h2>
       
       <div class="page_content">
       
       <ul class="features_list_detailed">
+
+          <?php
+
+               $fgmembersite->Locations();
+
+          ?>
       
-          <li class="featured">
+          <!--<li class="featured">
           <a href="focus.php">
           <div class="feat_small_icon"><img src="images/icons/indicators/busy.svg" alt="" title="" /></div>
           <div class="feat_small_details">
@@ -25,7 +35,7 @@
           </div>
           <span class="plus_icon"><img src="images/icons/black/plus.png" alt="" title="" /></span>
           </a>
-          </li> 
+          </li>
           
           <li>
           <div class="feat_small_icon"><img src="images/icons/indicators/slow.svg" alt="" title="" /></div>
@@ -160,7 +170,7 @@
           <a href="#">Brief 70 character description of this specific location.</a>
           </div>
           <span class="plus_icon"><a href="#"><img src="images/icons/teal/plus.png" alt="" title="" /></a></span>
-          </li>
+          </li>-->
           
           
       </ul>
@@ -169,7 +179,7 @@
       </div>
       
       </div>
-      
+
       
     </div>
   </div>
