@@ -216,6 +216,26 @@
     <h2>CHANGE LOCATION</span></h2>
     <a href="#" class="close-location close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
 
+
+<label>
+  <input type="radio" id="city" name="tampa" value="Tampa">
+  <div id="tampa" class="location-image"></div>
+  <div class="location-name"><h3>TAMPA</h3></div>
+</label>
+
+<label>
+  <input type="city" id="city" name="orlando" value="Orlando">
+  <div id="orlando" class="location-image"></div>
+  <div class="location-name"><h3>ORLANDO</h3></div>
+</label>
+
+<label>
+  <input type="radio" id="city" name="miami" value="Miami">
+  <div id="miami" class="location-image"></div>
+  <div class="location-name"><h3>MIAMI</h3></div>
+</label>
+
+<!--
       <a href="#" data-popup=".popup-tampa-location" class="close-panel open-popup">
         <div id="tampa" class="location-image"></div>
         <div class="location-name"><h3>TAMPA</h3></div>
@@ -230,6 +250,7 @@
         <div id="miami" class="location-image"></div>
         <div class="location-name"><h3>MIAMI</h3></div>
       </a>
+-->
 
   </div>
 </div>
