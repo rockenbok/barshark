@@ -1,0 +1,107 @@
+$teal: #3ddcdc;
+$white: #ffffff;
+$black: #000000;
+$grey: #efefef;
+
+
+
+$font: 'Helvetica Neue', sans-serif;
+$robfont: 'roboto', sans-serif;
+
+
+
+$span-font-sizes: (
+  null: 12px,
+  480px : 14px
+);
+
+$p-font-sizes: (
+  null  : 12px,
+  480px : 14px
+);
+
+$h1-font-sizes: (
+  null  : 40px,
+  480px : 50px,
+  768px : 70px
+);
+
+$h2-font-sizes: (
+  null  : 16px,
+  480px : 18px,
+  768px : 22px
+);
+
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -webkit-transition-property: $property;
+    transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property:    $duration;
+    -o-transition-property:      $duration;
+    -webkit-transition-property: $duration;
+    transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function:    $timing;
+    -o-transition-timing-function:      $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+
+
+
+
+
+
+@mixin user-select($select) {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+
+
+
+@mixin media($queryString){
+    @media #{$queryString} {
+      @content;
+    }
+}
