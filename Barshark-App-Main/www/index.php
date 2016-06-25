@@ -352,7 +352,7 @@
                   <nav class="user-nav">
                     <ul>
                       <li><a href="features.php" class="close-panel"><img src="images/icons/teal/favorites.png" alt="" title="" /><span>FAVORITES</span></a></li>
-                      <li><a href="features.html" class="close-panel"><img src="images/icons/black/uber.svg" alt="https://m.uber.com/ul/" class="external" target="_blank" title="" /><span>GET A RIDE</span></a></li>
+                      <li><a href="https://m.uber.com/ul/" class="external"><img src="images/icons/black/uber.svg" alt="" title="" /><span>GET A RIDE</span></a></li>
                       <li><a href="myfriends.php" class="close-panel"><img src="images/icons/teal/users.png" alt="" title="" /><span>MY FRIENDS</span></a></li>
                       <li><a href="#" data-popup=".popup-profile" class="open-popup"><img src="images/icons/teal/user.png" alt="" title="" /><span>EDIT PROFILE</span></a></li>
                       <li><a href="#" data-popup=".popup-account" class="open-popup"><img src="images/icons/teal/briefcase.png" alt="" title="" /><span>MY ACCOUNT</span></a></li>
