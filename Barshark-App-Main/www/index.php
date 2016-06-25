@@ -217,40 +217,25 @@
     <a href="#" class="close-location close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
 
 
-<label>
-  <input type="radio" id="city" name="tampa" value="Tampa">
-  <div id="tampa" class="location-image"></div>
-  <div class="location-name"><h3>TAMPA</h3></div>
-</label>
+    <label>
+      <input type="radio" data-popup=".popup-tampa-location" class="close-panel open-popup" id="city" name="tampa" value="Tampa">
+      <div id="tampa" class="location-image"></div>
+      <div class="location-name"><h3>TAMPA</h3></div>
+    </label>
 
-<label>
-  <input type="city" id="city" name="orlando" value="Orlando">
-  <div id="orlando" class="location-image"></div>
-  <div class="location-name"><h3>ORLANDO</h3></div>
-</label>
+    <!--
+    <label>
+      <input type="radio" data-popup=".popup-orlando-location" class="close-panel open-popup" id="city" name="orlando" value="Orlando">
+      <div id="orlando" class="location-image"></div>
+      <div class="location-name"><h3>ORLANDO</h3></div>
+    </label>
 
-<label>
-  <input type="radio" id="city" name="miami" value="Miami">
-  <div id="miami" class="location-image"></div>
-  <div class="location-name"><h3>MIAMI</h3></div>
-</label>
-
-<!--
-      <a href="#" data-popup=".popup-tampa-location" class="close-panel open-popup">
-        <div id="tampa" class="location-image"></div>
-        <div class="location-name"><h3>TAMPA</h3></div>
-      </a>
-
-      <a href="#" data-popup=".popup-orlando-location" class="close-panel open-popup">
-        <div id="orlando" class="location-image"></div>
-        <div class="location-name"><h3>ORLANDO</h3></div>
-      </a>
-
-      <a href="#" data-popup=".popup-miami-location" class="close-panel open-popup">
-        <div id="miami" class="location-image"></div>
-        <div class="location-name"><h3>MIAMI</h3></div>
-      </a>
--->
+    <label>
+      <input type="radio" data-popup=".popup-miami-location" class="close-panel open-popup" id="city" name="miami" value="Miami">
+      <div id="miami" class="location-image"></div>
+      <div class="location-name"><h3>MIAMI</h3></div>
+    </label>
+    -->
 
   </div>
 </div>
@@ -262,21 +247,25 @@
       <div class="content-block-login">
         <h4>CHOOSE DISTRICT</h4>
 
-        <a href="features.php" class="close-popup">
+        <label>
+          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="all" value="0">
           <div class="location-district"><h3>ALL</h3></div>
-        </a>
+        </label>
 
-        <a href="features.php" class="close-popup">
+        <label>
+          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="downtown" value="1">
           <div class="location-district"><h3>DOWNTOWN</h3></div>
-        </a>
+        </label>
 
-        <a href="features.php" class="close-popup">
+        <label>
+          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="soho" value="2">
           <div class="location-district"><h3>SOHO</h3></div>
-        </a>
+        </label>
 
-        <a href="features.php" class="close-popup">
+        <label>
+          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="ybor" value="3">
           <div class="location-district"><h3>YBOR</h3></div>
-        </a>
+        </label>
 
       </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
@@ -285,54 +274,55 @@
 
 
 
-<!-- ORLANDO LOCATION DISTRICT POPUP -->
-    <div class="popup popup-orlando-location">
+
+<!-- TAMPA LOCATION DISTRICT POPUP -->
+    <div class="popup popup-tampa-eat-drink-location">
       <div class="content-block-login">
-        <h4>CHOOSE DISTRICT</h4>
+        <h4>CHOOSE STYLE</h4>
 
-        <a href="features.php" class="close-popup">
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="all" value="0">
           <div class="location-district"><h3>ALL</h3></div>
-        </a>
+        </label>
 
-        <a href="features.php" class="close-popup">
-          <div class="location-district"><h3>DOWNTOWN</h3></div>
-        </a>
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="bakery" value="1">
+          <div class="location-district"><h3>BAKERY</h3></div>
+        </label>
 
-        <a href="features.php" class="close-popup">
-          <div class="location-district"><h3>UCF</h3></div>
-        </a>
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="bars" value="2">
+          <div class="location-district"><h3>BARS</h3></div>
+        </label>
+
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="cafes-coffee" value="3">
+          <div class="location-district"><h3>CAFES/COFFEE</h3></div>
+        </label>
+
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="dessert" value="4">
+          <div class="location-district"><h3>DESSERT</h3></div>
+        </label>
+
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="dining" value="5">
+          <div class="location-district"><h3>DINING</h3></div>
+        </label>
+
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="teas-juice" value="6">
+          <div class="location-district"><h3>TEAS/JUICE</h3></div>
+        </label>
+
+        <label>
+          <input type="radio" class="close-popup" id="eat-drink" name="vegan-vegetarian" value="7">
+          <div class="location-district"><h3>VEGAN/VEGETARIAN</h3></div>
+        </label>
 
       </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
     </div>
-
-
-
-
-<!-- MIAMI LOCATION DISTRICT POPUP -->
-    <div class="popup popup-miami-location">
-      <div class="content-block-login">
-        <h4>CHOOSE DISTRICT</h4>
-
-        <a href="features.php" class="close-popup">
-          <div class="location-district"><h3>ALL</h3></div>
-        </a>
-
-        <a href="features.php" class="close-popup">
-          <div class="location-district"><h3>BRICKELL</h3></div>
-        </a>
-
-        <a href="features.php" class="close-popup">
-          <div class="location-district"><h3>DOWNTOWN</h3></div>
-        </a>
-
-      </div>
-      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
-    </div>
-
-
-
-
 
 
 
