@@ -862,7 +862,7 @@ class FGMembersite
     }
 
     function focus($res)
-      {
+    {
         if(!$this->DBLogin())
         {
             $this->HandleError("Database login failed!");
@@ -871,9 +871,9 @@ class FGMembersite
 
         $id = $res;
         $qry = "Select * from locations where id='$id'";
-        
+
         $result = mysql_query($qry,$this->connection);
-        
+
         if (!$result || mysql_num_rows($result) <= 0) {
             echo "0 Results";
         } 
@@ -894,8 +894,92 @@ class FGMembersite
             ,    '</div>'
             ;
         }    
-      }
-    
+    }
+
+    function City()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }  
+
+        $qry = "Select distinct city from locations";
+        $result = mysql_query($qry,$this->connection);
+
+        if (!$result || mysql_num_rows($result) <= 0) {
+          echo "0 Results";
+        } 
+        else 
+        {
+          // output data of each row
+          while($row = mysql_fetch_assoc($result)) {
+              echo '<label>'
+              ,    '<input type="radio" data-popup=".popup-district" class="close-panel open-popup" id="' . $row["city"] . '" name="city" value="' . $row["city"] . '">'
+              ,    '<div id="' . $row["city"] . '" class="location-image"></div>'
+              ,    '<div class="location-name"><h3>' . $row["city"] . '</h3></div>'
+              ,    '</label>'
+              ;
+          }
+        }
+    }
+
+    function District()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }  
+
+        /*
+        $qry = "Select distinct district from locations where city='$city'";
+        $result = mysql_query($qry,$this->connection);
+
+        if (!$result || mysql_num_rows($result) <= 0) {
+          echo "0 Results";
+        } 
+        else 
+        {
+          // output data of each row
+          while($row = mysql_fetch_assoc($result)) {
+              echo '<label>'
+              ,    '<input type="radio" data-popup=".popup-style" class="close-panel open-popup" id="' . $row["district"] . '" name="district" value="' . $row["district"] . '">'
+              ,    '<div class="location-district"><h3>' . $row["district"] . '</h3></div>'
+              ,    '</label>'
+              ;
+          }
+        }
+        */
+    }
+
+    function Style()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }  
+
+        $qry = "Select distinct style from locations";
+        $result = mysql_query($qry,$this->connection);
+
+        if (!$result || mysql_num_rows($result) <= 0) {
+          echo "0 Results";
+        } 
+        else 
+        {
+          // output data of each row
+          while($row = mysql_fetch_assoc($result)) {
+              echo '<label>'
+              ,    '<input type="radio" class="close-popup" id="' . $row["style"] . '" name="style" value="' . $row["style"] . '">'
+              ,    '<div class="location-district"><h3>' . $row["style"] . '</h3></div>'
+              ,    '</label>'
+              ;
+          }
+        }
+    }
+
     //-------Public Helper functions -------------
     function GetSelfScript()
     {

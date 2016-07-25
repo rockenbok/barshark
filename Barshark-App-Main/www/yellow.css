@@ -1,0 +1,142 @@
+/*==============================================
+[Blue color stylesheet yellow.css]
+
+Author:	SINDEVO.COM - Smart Internet Development
+Template:	Codec - Mobile Web APP Template
+================================================*/
+
+/*===============================================*/
+/* BLUE COLOR */
+/*===============================================*/	
+a, blockquote span, .photo-categories a.active, .post_author a, .comm_content p a, .contactform label .item-title span, .shop_pagination a, .shop_pagination span.shop_pagenr, .shop_item .shop_item_details p strong, .cartcontainer h2 span, .item_title span, input.qntyminus, input.qntyplus, input.qntyminusshop, input.qntyplusshop, .order_item_title span, .carttotal_row_last, .user-nav ul li a, .logo span, ul.shop_items li .shop_item_price{
+color: #fff;
+}
+.logo span {
+color: #231f20;
+}
+blockquote{
+border-left:3px solid #ffcc5f;
+}
+a.button_full, a.button_small, .call_button a{
+background-color:#2d2e3e; 
+}
+.button, .shop_pagination a, input.qntyminus, input.qntyplus, input.qntyminusshop, input.qntyplusshop{
+border: 1px solid #ffcc5f;
+color: #232323;
+}
+input.qntyminus, input.qntyplus{
+color:#FFFFFF;
+}
+.button.active {
+background: #ffcc5f;
+color: #232323;
+}
+/*Green color of the submit buttons*/
+.contactform input.form_submit, .loginform input.form_submit, .profileform input.form_submit, .accountform input.form_submit, .commentform input.form_submit{ 
+background-color:#3ddcdc;
+}
+/*Red color of the delete submit buttons*/
+.deleteform input.form_submit {
+	background-color: red;
+	width:100%;
+	padding:5px 0; 
+	margin:15px 0 0 0; 
+	font-weight:300;
+	text-align:center;
+	cursor:pointer; 
+	font-size:12px;
+	color:#fff;
+	-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
+	border: none;
+	cursor:pointer;
+	-webkit-appearance: none;
+}
+.deleteform input.form_input {
+	padding: 10px 0 10px 3%;
+	width: 80%;
+	margin: 0 0 20px 5%;
+	border: none;
+	border-bottom: 1px solid #45535d;
+	background: none;
+	color: #b7bec2;
+}
+/*Yellow color of the cart item bullet*/
+.main-nav ul li div.cartitems{
+background-color:#ffcc5f;
+}
+ul.responsive_table li:first-child, .size_selectors input[type=radio]:checked + label{
+background-color:#ffcc5f;
+color:#FFFFFF;
+}
+.color_selectors input[type=radio]:checked + label {
+border:2px #ffcc5f solid;
+}
+ul.features_list_detailed li.featured, .shop_item .shop_item_price, .size_selectors input[type=radio]:checked + label, .item_price, .order_item_price, a.checkout, .post_date, .shop_header_title a, .shop_item a#addtocart, ul.shop_items li a#addtocart{
+background-color:#3ddcdc;
+}
+li.table_row{
+background-color:#f5f5f4;
+}
+.shop_item h4{
+border-bottom:1px solid #ffcc5f;
+}
+label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox, label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox {
+    border: medium none;
+    background-color: #ffcc5f;
+}
+label.label-radio input[type="checkbox"]:checked ~ .item-inner, label.label-radio input[type="radio"]:checked ~ .item-inner {
+    background: transparent url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ffcc5f' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>") no-repeat scroll calc(100% - 15px) center / 13px 10px;
+}
+/*===============================================*/
+/* HOME BG AND PAGES HEADER BG */
+/*===============================================*/	
+.homepage{
+background: url(../images/main-bg.jpg) no-repeat center center;
+background-attachment:fixed;
+-webkit-background-size: 100%; 
+-moz-background-size: 100%;
+-o-background-size: 100%;
+background-size: 100%;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover; 
+background-size: cover;
+}
+.navbarpages{
+background: #3ddcdc;
+}
+/*===============================================*/
+/* MAIN NAV LINKS */
+/*===============================================*/	
+/*.main-nav ul li{
+background: #fff;
+}*/
+.main-nav ul li a{
+color:#231f20;
+}
+/*===============================================*/
+/* POPUPS AND TOOLBAR */
+/*===============================================*/	
+.popup, .page_content_menu{
+background: #414141;
+}
+.popup-login, .popup-signup, .popup-forgot, .popup-profile, .popup-account, .popup-sent, .popup-confirm, .popup-delete, .popup-profilepic, .popup-city, .popup-district, .popup-style{
+background-color:#263239;
+}
+/*===============================================*/
+/* LEFT AND RIGHT SLIDE PANEL */
+/*===============================================*/	
+.panel-left {
+background:#1b1b25;
+}
+.panel-right {
+background:#2d2e3e;
+}
+/* PANEL CLOSE BUTTON */
+.close_popup_button a{
+background-color:#ffcc5f;
+}
+#map_canvas {
+    height: 200px;
+    width: 100%;
+}

@@ -207,122 +207,68 @@
               <a href="checkout.html" class="checkout close-panel">PROCEED TO CHECKOUT</a>           </div>
     </div>-->
 
-
-
-
-
+<!--LOCATION FORM-->
+<!--CITY-->
 <div class="panel panel-left panel-reveal">
   <div class="cartcontainer">
     <h2>CHANGE LOCATION</span></h2>
     <a href="#" class="close-location close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
 
+    <?php
 
-    <label>
-      <input type="radio" data-popup=".popup-tampa-location" class="close-panel open-popup" id="city" name="tampa" value="Tampa">
-      <div id="tampa" class="location-image"></div>
-      <div class="location-name"><h3>TAMPA</h3></div>
-    </label>
+      $fgmembersite->City();
 
-    <!--
-    <label>
-      <input type="radio" data-popup=".popup-orlando-location" class="close-panel open-popup" id="city" name="orlando" value="Orlando">
-      <div id="orlando" class="location-image"></div>
-      <div class="location-name"><h3>ORLANDO</h3></div>
-    </label>
+    ?>
 
-    <label>
-      <input type="radio" data-popup=".popup-miami-location" class="close-panel open-popup" id="city" name="miami" value="Miami">
-      <div id="miami" class="location-image"></div>
-      <div class="location-name"><h3>MIAMI</h3></div>
-    </label>
-    -->
-
+    <script>
+    function myCity(city) {
+        var selectedCity = city;
+    }
+    </script>
+    
   </div>
 </div>
 
+<!--DISTRICT-->
+<div class="popup popup-district">
+  <div class="content-block-login">
+    <h4>CHOOSE DISTRICT</h4>
 
+    <label>
+      <input type="radio" data-popup=".popup-style" class="close-panel open-popup" id="ALL" name="district" value="NULL">
+      <div class="location-district"><h3>All</h3></div>
+    </label>
 
-<!-- TAMPA LOCATION DISTRICT POPUP -->
-    <div class="popup popup-tampa-location">
-      <div class="content-block-login">
-        <h4>CHOOSE DISTRICT</h4>
+    <?php
 
-        <label>
-          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="all" value="0">
-          <div class="location-district"><h3>ALL</h3></div>
-        </label>
+      $fgmembersite->District();
 
-        <label>
-          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="downtown" value="1">
-          <div class="location-district"><h3>DOWNTOWN</h3></div>
-        </label>
+    ?>
 
-        <label>
-          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="soho" value="2">
-          <div class="location-district"><h3>SOHO</h3></div>
-        </label>
+  </div>
+  <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+</div>
 
-        <label>
-          <input type="radio" data-popup=".popup-tampa-eat-drink-location" class="close-panel open-popup" id="district" name="ybor" value="3">
-          <div class="location-district"><h3>YBOR</h3></div>
-        </label>
+<!--STYLE-->
+<div class="popup popup-style">
+  <div class="content-block-login">
+    <h4>CHOOSE STYLE</h4>
 
-      </div>
-      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
-    </div>
+    <label>
+      <input type="radio" class="close-popup" id="ALL" name="style" value="NULL">
+      <div class="location-district"><h3>ALL</h3></div>
+    </label>
 
+    <?php
 
+      $fgmembersite->Style();
 
+    ?>
 
+  </div>
+  <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+</div>
 
-<!-- TAMPA LOCATION DISTRICT POPUP -->
-    <div class="popup popup-tampa-eat-drink-location">
-      <div class="content-block-login">
-        <h4>CHOOSE STYLE</h4>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="all" value="0">
-          <div class="location-district"><h3>ALL</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="bakery" value="1">
-          <div class="location-district"><h3>BAKERY</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="bars" value="2">
-          <div class="location-district"><h3>BARS</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="cafes-coffee" value="3">
-          <div class="location-district"><h3>CAFES/COFFEE</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="dessert" value="4">
-          <div class="location-district"><h3>DESSERT</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="dining" value="5">
-          <div class="location-district"><h3>DINING</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="teas-juice" value="6">
-          <div class="location-district"><h3>TEAS/JUICE</h3></div>
-        </label>
-
-        <label>
-          <input type="radio" class="close-popup" id="eat-drink" name="vegan-vegetarian" value="7">
-          <div class="location-district"><h3>VEGAN/VEGETARIAN</h3></div>
-        </label>
-
-      </div>
-      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
-    </div>
 
 
 
@@ -360,7 +306,7 @@
 
           <div data-page="index" class="page homepage">
             <div class="page-content">
-					     <div class="logo"><img src="images/icons/white/logo.svg" alt=""><span>Making every night, the best night.</span></div>
+               <div class="logo"><img src="images/icons/white/logo.svg" alt=""><span>Making every night, the best night.</span></div>
                   <nav class="main-nav">
                       <ul>
                           <li><a href="#" id="loginbtn" data-popup=".popup-login" class="open-popup"><img src="images/icons/login/login.svg" alt="" title="" /><!--<span>LOGIN</span>--></a></li>
@@ -475,21 +421,21 @@
                 <option value="female">Female</option>
               </select>-->
 
-				<div id="gender" class="gender form_input required" name="gender">
-				  	<ul>
-					  <li>
-					    <input type="radio" id="male-option" name="gender" value="m">
-					    <label for="male-option">Male</label>
-					    <div class="check"></div>
-					  </li>
-					  
-					  <li>
-					    <input type="radio" id="female-option" name="gender" value="f">
-					    <label for="female-option">Female</label>
-					    <div class="check"><div class="inside"></div>
-					  </li>
-					</ul>
-				</div>
+        <div id="gender" class="gender form_input required" name="gender">
+            <ul>
+            <li>
+              <input type="radio" id="male-option" name="gender" value="m">
+              <label for="male-option">Male</label>
+              <div class="check"></div>
+            </li>
+            
+            <li>
+              <input type="radio" id="female-option" name="gender" value="f">
+              <label for="female-option">Female</label>
+              <div class="check"><div class="inside"></div>
+            </li>
+          </ul>
+        </div>
 
             <span id='register_gender_errorloc' class='error'></span>
             </div>
