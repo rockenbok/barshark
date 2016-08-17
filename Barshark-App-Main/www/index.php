@@ -24,6 +24,14 @@
      }
   }
 
+  if(isset($_POST['submittedLocation']))
+  {
+     if($fgmembersite->SaveLocation())
+     {
+        $fgmembersite->RedirectToURL("index.php");
+     }
+  }
+
   if(isset($_POST['submittedRegister']))
   {
      if($fgmembersite->RegisterUser())
@@ -208,66 +216,105 @@
     </div>-->
 
 <!--LOCATION FORM-->
-<!--CITY-->
-<div class="panel panel-left panel-reveal">
-  <div class="cartcontainer">
-    <h2>CHANGE LOCATION</span></h2>
-    <a href="#" class="close-location close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
+<form id="LocationForm" action='<?php echo $fgmembersite->GetSelfScript(); ?>' method="post" accept-charset='UTF-8'>
+  <input type='hidden' name='submittedLocation' id='submittedLocation' value='1'/>
+  <!--CITY-->
+  <div class="panel panel-left panel-reveal">
+    <div class="cartcontainer">
+      <h2>CHANGE LOCATION</h2>
+      <a href="#" class="close-location close-panel"><img src="images/icons/white/menu_close.png" alt="" title="" /></a>
 
-    <?php
+      <?php
 
-      $fgmembersite->City();
+        $fgmembersite->City();
 
-    ?>
-
-    <script>
-    function myCity(city) {
-        var selectedCity = city;
-    }
-    </script>
-    
+      ?>
+      
+    </div>
   </div>
-</div>
 
-<!--DISTRICT-->
-<div class="popup popup-district">
-  <div class="content-block-login">
-    <h4>CHOOSE DISTRICT</h4>
+  <!--DISTRICT-->
+  <div class="popup popup-district">
+    <div class="content-block-login">
+      <h4>CHOOSE DISTRICT</h4>
 
-    <label>
-      <input type="radio" data-popup=".popup-style" class="close-panel open-popup" id="ALL" name="district" value="NULL">
-      <div class="location-district"><h3>All</h3></div>
-    </label>
+      <label>
+        <input type="radio" data-popup=".popup-style" class="close-panel open-popup" id="ALL" name="district" value="NULL">
+        <div class="location-district"><h3>All</h3></div>
+      </label>
 
-    <?php
+      <div id="districtList"></div>
 
-      $fgmembersite->District();
+      <script>
+      function getDistrict(city) 
+      {
+        if(city == "Miami")
+        {
+          document.getElementById("districtList").innerHTML = 
+          "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='SoHo' name='district' value='SoHo'><div class='location-district'><h3>SoHo</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='Downtown' name='district' value='Downtown'><div class='location-district'><h3>Downtown</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          ;
+        }
+        else if(city == "Orlando")
+        { 
+          document.getElementById("districtList").innerHTML = 
+          "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='Downtown' name='district' value='Downtown'><div class='location-district'><h3>Downtown</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='Oviedo' name='district' value='Oviedo'><div class='location-district'><h3>Oviedo</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='UCF' name='district' value='UCF'><div class='location-district'><h3>UCF</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='Winter Park' name='district' value='Winter Park'><div class='location-district'><h3>Winter Park</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          
+          ;
+        }
+        else if(city == "Tampa")
+        { 
+          document.getElementById("districtList").innerHTML = 
+          "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='Downtown' name='district' value='Downtown'><div class='location-district'><h3>Downtown</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='South Beach' name='district' value='South Beach'><div class='location-district'><h3>South Beach</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
+          + "<label><input type='radio' data-popup='.popup-style' class='close-panel open-popup' id='TBD' name='district' value='TBD'><div class='location-district'><h3>TBD</h3></div></label>"
 
-    ?>
+          ;
+        }
+        else
+        { 
+          document.getElementById("districtList").innerHTML = 
+          "<?php echo '0 results found'; ?>";
+        }
+      }
+      </script>
 
+    </div>
+    <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
   </div>
-  <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
-</div>
 
-<!--STYLE-->
-<div class="popup popup-style">
-  <div class="content-block-login">
-    <h4>CHOOSE STYLE</h4>
+  <!--STYLE-->
+  <div class="popup popup-style">
+    <div class="content-block-login">
+      <h4>CHOOSE STYLE</h4>
 
-    <label>
-      <input type="radio" class="close-popup" id="ALL" name="style" value="NULL">
-      <div class="location-district"><h3>ALL</h3></div>
-    </label>
+      <label>
+        <input type="radio" class="close-popup" id="ALL" name="style" value="NULL">
+        <div class="location-district"><h3>ALL</h3></div>
+      </label>
 
-    <?php
+      <?php
 
-      $fgmembersite->Style();
+        $fgmembersite->Style();
 
-    ?>
+      ?>
 
+    </div>
+    <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
   </div>
-  <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
-</div>
+</form>
 
 
 
@@ -432,7 +479,7 @@
             <li>
               <input type="radio" id="female-option" name="gender" value="f">
               <label for="female-option">Female</label>
-              <div class="check"><div class="inside"></div>
+              <div class="check"><div class="inside"></div></div>
             </li>
           </ul>
         </div>
@@ -656,7 +703,7 @@
                             ,      '<li>'
                             ,       '<input type="radio" id="female-option2" name="newgender" value="f">'
                             ,       '<label for="female-option2">Female</label>'
-                            ,       '<div class="check"><div class="inside"></div>'
+                            ,       '<div class="check"><div class="inside"></div></div>'
                             ,      '</li>'
                             ,     '</ul>'
                             ;
@@ -672,7 +719,7 @@
                             ,      '<li>'
                             ,       '<input type="radio" id="female-option2" name="newgender" value="f" checked="checked">'
                             ,       '<label for="female-option2">Female</label>'
-                            ,       '<div class="check"><div class="inside"></div>'
+                            ,       '<div class="check"><div class="inside"></div></div>'
                             ,      '</li>'
                             ,     '</ul>'
                             ;

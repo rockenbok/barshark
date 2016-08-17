@@ -915,7 +915,7 @@ class FGMembersite
           // output data of each row
           while($row = mysql_fetch_assoc($result)) {
               echo '<label>'
-              ,    '<input type="radio" data-popup=".popup-district" class="close-panel open-popup" id="' . $row["city"] . '" name="city" value="' . $row["city"] . '">'
+              ,    '<input type="radio" data-popup=".popup-district" class="close-panel open-popup" id="' . $row["city"] . '" name="city" value="' . $row["city"] . '" onclick="getDistrict(this.value);">'
               ,    '<div id="' . $row["city"] . '" class="location-image"></div>'
               ,    '<div class="location-name"><h3>' . $row["city"] . '</h3></div>'
               ,    '</label>'
@@ -924,7 +924,7 @@ class FGMembersite
         }
     }
 
-    function District()
+    function DistrictMiami()
     {
         if(!$this->DBLogin())
         {
@@ -932,7 +932,7 @@ class FGMembersite
             return false;
         }  
 
-        /*
+        $city = "Miami";
         $qry = "Select distinct district from locations where city='$city'";
         $result = mysql_query($qry,$this->connection);
 
@@ -950,7 +950,6 @@ class FGMembersite
               ;
           }
         }
-        */
     }
 
     function Style()
@@ -972,12 +971,34 @@ class FGMembersite
           // output data of each row
           while($row = mysql_fetch_assoc($result)) {
               echo '<label>'
-              ,    '<input type="radio" class="close-popup" id="' . $row["style"] . '" name="style" value="' . $row["style"] . '">'
+              ,    '<input type="radio" onchange="this.form.submit();" class="close-popup" id="' . $row["style"] . '" name="style" value="' . $row["style"] . '">'
               ,    '<div class="location-district"><h3>' . $row["style"] . '</h3></div>'
               ,    '</label>'
               ;
           }
         }
+    }
+
+    function SaveLocation()
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }   
+        $email = $_COOKIE['barshark_email_cookie'];
+        $city = trim($_POST['city']);
+        $district = trim($_POST['district']);
+        $style = trim($_POST['style']);
+        
+        $qry = "Update $this->tablename Set defaultcity='$city', defaultdistrict='$district', defaultstyle='$style' where email='$email'";
+        
+        if(!mysql_query($qry,$this->connection))
+        {
+            $this->HandleDBError("Error finding locations");
+            return false;
+        }     
+        return true;    
     }
 
     //-------Public Helper functions -------------
