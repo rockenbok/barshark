@@ -28,7 +28,12 @@
   {
      if($fgmembersite->SaveLocation())
      {
-        $fgmembersite->RedirectToURL("index.php");
+        echo '<script>'
+           , 'function myFunction(){'
+           , 'document.getElementById("features").click();'
+           , '}'
+           , '</script>'
+        ;
      }
   }
 
@@ -114,19 +119,6 @@
      }
   }
 
-  if(isset($_POST['submittedLocation']))
-  {
-     if($fgmembersite->ChangeLocation())
-     {
-        echo '<script>'
-           , 'function myFunction(){'
-           , 'document.getElementById("features").click();'
-           , '}'
-           , '</script>'
-        ;
-     }
-  }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -146,6 +138,8 @@
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,900' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'>
+</script>
 </head>
 <body id="mobile_wrap" onload="myFunction()">
 
@@ -239,7 +233,7 @@
       <h4>CHOOSE DISTRICT</h4>
 
       <label>
-        <input type="radio" data-popup=".popup-style" class="close-panel open-popup" id="ALL" name="district" value="NULL">
+        <input type="radio" data-popup=".popup-style" class="close-panel open-popup" id="ALL" name="district" value="">
         <div class="location-district"><h3>All</h3></div>
       </label>
 
@@ -301,7 +295,7 @@
       <h4>CHOOSE STYLE</h4>
 
       <label>
-        <input type="radio" class="close-popup" id="ALL" name="style" value="NULL">
+        <input type="radio" class="close-popup" id="ALL" name="style" value="">
         <div class="location-district"><h3>ALL</h3></div>
       </label>
 
@@ -310,6 +304,16 @@
         $fgmembersite->Style();
 
       ?>
+
+      <script type='text/javascript'>
+
+       $(document).ready(function() { 
+         $('input[name=style]').change(function(){
+              $('form[id=LocationForm]').submit();
+         });
+        });
+
+      </script>
 
     </div>
     <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>

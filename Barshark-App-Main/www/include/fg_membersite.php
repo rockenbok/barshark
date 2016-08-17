@@ -650,7 +650,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -674,7 +674,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -703,7 +703,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -727,7 +727,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -759,7 +759,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -783,7 +783,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -813,7 +813,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -837,7 +837,7 @@ class FGMembersite
                     $result = mysql_query($qry,$this->connection);
 
                     if (!$result || mysql_num_rows($result) <= 0) {
-                        echo "0 Results";
+                        echo " ";
                     } 
                     else 
                     {
@@ -875,7 +875,7 @@ class FGMembersite
         $result = mysql_query($qry,$this->connection);
 
         if (!$result || mysql_num_rows($result) <= 0) {
-            echo "0 Results";
+            echo "Could not retrieve information. Please try again.";
         } 
         else 
         {
@@ -924,6 +924,7 @@ class FGMembersite
         }
     }
 
+    /*
     function DistrictMiami()
     {
         if(!$this->DBLogin())
@@ -951,6 +952,7 @@ class FGMembersite
           }
         }
     }
+    */
 
     function Style()
     {
@@ -971,7 +973,7 @@ class FGMembersite
           // output data of each row
           while($row = mysql_fetch_assoc($result)) {
               echo '<label>'
-              ,    '<input type="radio" onchange="this.form.submit();" class="close-popup" id="' . $row["style"] . '" name="style" value="' . $row["style"] . '">'
+              ,    '<input type="radio" id="' . $row["style"] . '" name="style" value="' . $row["style"] . '">'
               ,    '<div class="location-district"><h3>' . $row["style"] . '</h3></div>'
               ,    '</label>'
               ;
